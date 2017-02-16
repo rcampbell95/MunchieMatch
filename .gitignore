@@ -63,11 +63,12 @@ proguard/
 captures/
 
 
+
 # Intellij
 
 *.iml
 
-.idea/workspace.xml
+git .idea/workspace.xml
 
 .idea/tasks.xml
 
