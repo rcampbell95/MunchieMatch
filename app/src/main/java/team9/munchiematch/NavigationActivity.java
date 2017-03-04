@@ -1,6 +1,7 @@
 package team9.munchiematch;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,7 +21,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class NavigationActivity extends AppCompatActivity {
+public class NavigationActivity extends AppCompatActivity implements UserProfileFragment.OnFragmentInteractionListener,
+FiltersFragment.OnFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -139,6 +141,15 @@ public class NavigationActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            switch(position) {
+                case 0:
+                    return PlaceholderFragment.newInstance(position + 1);
+                case 1:
+                    return FiltersFragment.newInstance("Hello", "World");
+                case 2:
+                    return UserProfileFragment.newInstance();
+            }
+
             return PlaceholderFragment.newInstance(position + 1);
         }
 
@@ -156,11 +167,14 @@ public class NavigationActivity extends AppCompatActivity {
                 case 1:
                     return "SECTION 2";
                 case 2:
-                    return "SECTION 3";
+                    return "Profile";
             }
             return null;
         }
     }
 
-    public UserProfileFragment Profile;
+    public void onFragmentInteraction(Uri uri) {
+        // TODO -- implement for action between fragments
+    }
+
 }
