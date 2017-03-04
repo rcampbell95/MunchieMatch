@@ -49,10 +49,16 @@ proguard/
 captures/
 
 
+
 # Intellij
 *.iml
 
+<<<<<<< HEAD
 .idea/workspace.xml
+=======
+git .idea/workspace.xml
+
+>>>>>>> 7afa155393c9edabc423ac96018345dad6837c3c
 .idea/tasks.xml
 .idea/gradle.xml
 .idea/libraries

@@ -19,4 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+<<<<<<< HEAD
+=======
+    public void changeActivity(View view) {
+        Intent intent = new Intent(this, NavigationActivity.class);
+        startActivity(intent);
+    }
+>>>>>>> 7afa155393c9edabc423ac96018345dad6837c3c
 }
