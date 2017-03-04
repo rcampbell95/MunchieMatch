@@ -10,13 +10,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="team9.munchiematch.MainActivity">
 
+
     <Button
-        android:text="Next Activity"
+        android:text="Next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="197dp"
-        android:id="@+id/button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="119dp"
+        android:layout_marginTop="130dp"
+        android:id="@+id/Main_Button"
         android:onClick="changeActivity"/>
 </RelativeLayout>
