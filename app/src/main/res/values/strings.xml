@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Munchie Match</string>
+    <string name="pauseButtonLabel">Garbage</string>
+    <string name="startButtonLabel">Start</string>
+    <string name="goToTimer">GoToTimer</string>
 </resources>
