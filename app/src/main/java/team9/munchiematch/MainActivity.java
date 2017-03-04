@@ -13,6 +13,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
+=======
+    /** Called when user hits goToTimerButton */
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, TimerActivity.class);
+        startActivity(intent);
+    }
+>>>>>>> origin/development
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +28,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+<<<<<<< HEAD
     public void changeActivity(View view){
         Intent intent = new Intent(this, IngredientSearch.class);
+=======
+<<<<<<< HEAD
+=======
+    public void changeActivity(View view) {
+        Intent intent = new Intent(this, NavigationActivity.class);
+>>>>>>> origin/development
         startActivity(intent);
 
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7afa155393c9edabc423ac96018345dad6837c3c
+>>>>>>> origin/development
 }
