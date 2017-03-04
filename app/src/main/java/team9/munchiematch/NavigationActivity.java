@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class NavigationActivity extends AppCompatActivity implements UserProfileFragment.OnFragmentInteractionListener,
-FiltersFragment.OnFragmentInteractionListener {
+LikedRecipesFragment.OnFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -57,15 +57,6 @@ FiltersFragment.OnFragmentInteractionListener {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
     }
 
@@ -143,9 +134,10 @@ FiltersFragment.OnFragmentInteractionListener {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch(position) {
                 case 0:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return LikedRecipesFragment.newInstance("Param1", "Param2");
                 case 1:
-                    return FiltersFragment.newInstance("Hello", "World");
+                    return PlaceholderFragment.newInstance(position + 1);
+                    // TODO -- Add activity transition to matching portion of app
                 case 2:
                     return UserProfileFragment.newInstance();
             }
@@ -163,9 +155,9 @@ FiltersFragment.OnFragmentInteractionListener {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Liked Recipes";
                 case 1:
-                    return "SECTION 2";
+                    return "Matching";
                 case 2:
                     return "Profile";
             }
