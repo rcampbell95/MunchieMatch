@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
     package="team9.munchiematch">
-=======
-    package="munchiematch.munchiematch">
->>>>>>> 23549b92fe81153dc5a89e249fd47347dbfe3733
 
     <application
         android:allowBackup="true"
@@ -25,22 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserAreaActivity" />
->>>>>>> 23549b92fe81153dc5a89e249fd47347dbfe3733
-=======
-<<<<<<< HEAD
         <activity android:name=".TimerActivity"></activity>
-=======
-        <activity
-            android:name=".NavigationActivity"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
->>>>>>> 7afa155393c9edabc423ac96018345dad6837c3c
->>>>>>> origin/development
     </application>
 
 </manifest>
