@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+=======
 # Built application files
 *.apk
 *.ap_
@@ -49,10 +60,24 @@ proguard/
 captures/
 
 
+
 # Intellij
 *.iml
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 .idea/workspace.xml
+=======
+git .idea/workspace.xml
+
+>>>>>>> 7afa155393c9edabc423ac96018345dad6837c3c
+=======
+git .idea/workspace.xml
+
+=======
+.idea/workspace.xml
+>>>>>>> master
+>>>>>>> 8a003a74344cf7e51c13a8b99ee1fd63ad337f4b
 .idea/tasks.xml
 .idea/gradle.xml
 .idea/libraries
@@ -78,3 +103,4 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
+>>>>>>> origin/development
