@@ -9,8 +9,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <uses-permission android:name="android.permission.VIBRATE"/>
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +19,7 @@
         <activity android:name=".IngredientSearch" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserAreaActivity" />
-
-        <activity android:name=".TimerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        <activity android:name=".TimerActivity"></activity>
     </application>
 
 </manifest>

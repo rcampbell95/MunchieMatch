@@ -35,24 +35,16 @@
         android:id="@+id/pauseTimer"
         android:text="@string/pauseButtonLabel"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please enter start time in minutes:"
-        android:textSize="20dp"
-        android:layout_below="@+id/startTimer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/timerInput"
-        android:layout_marginTop="53dp"
-        android:layout_below="@+id/startTimer"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="300dp"
+         />
 
 
 </RelativeLayout>
