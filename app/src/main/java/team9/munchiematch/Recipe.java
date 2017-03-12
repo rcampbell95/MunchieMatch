@@ -7,30 +7,31 @@ import java.util.ArrayList;
  */
 
 public class Recipe {
-    ArrayList<Integer> recipeIngredients;
+    ArrayList<Pair> recipeIngredients;
+    ArrayList<Pair> recipeSteps;
 
     /*
-    Private class that represents
-    a line of user input
-    to the recipe submission form
+    Private class that implements
+    a tuple data structure
+    using generics
      */
-    private class IngredientPair {
-        Ingredient certainIngredient;
-        double quantity;
 
-        public IngredientPair(Ingredient newIngredient, double newQuantity){
-            certainIngredient = newIngredient;
-            quantity = newQuantity;
+    private class Pair<K, E> {
+        K first;
+        E second;
+
+        public Pair(K newFirst, E newSecond){
+            first = newFirst;
+            second = newSecond;
         }
 
-        public Ingredient getIngredient() {
-            return certainIngredient;
+        public K getFirst() {
+            return first;
         }
 
-        public double getQuantity() {
-            return quantity;
+        public E getSecond() {
+            return second;
         }
-
     }
 
     /*
@@ -40,5 +41,7 @@ public class Recipe {
     private class Ingredient {
 
     }
+
+
 }
 
