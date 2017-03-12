@@ -1,7 +1,8 @@
 package team9.munchiematch;
 
-import android.content.Context;
+
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,10 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.view.View.OnFocusChangeListener;
-import android.os.Vibrator;
-
-
+import android.media.RingtoneManager;
+import android.media.Ringtone;
 
 public class TimerActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,11 +38,16 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         text = (TextView) this.findViewById(R.id.elapsedTime);
         text.setText("0:00");
         timerInputText = (EditText) this.findViewById(R.id.timerInput);
-        //timerInputText.setFocusable(true);
     }
 
     public long getStartTime(){
-        return 60 * 1000 * Long.parseLong(timerInputText.getText().toString());
+        String inputText = timerInputText.getText().toString();
+        if (inputText.isEmpty() || inputText == "" || inputText == null || inputText.length() == 0) {
+            return 0;
+        }
+        else {
+            return 60 * 1000 * Long.parseLong(inputText);
+        }
     }
 
     public String timeToString (long startTime){
@@ -89,6 +93,12 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void playDefaultNotificationSound() {
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.play();
+    }
+
     public class MyCountDownTimer extends CountDownTimer {
 
         public MyCountDownTimer(long startTime, long interval) {
@@ -97,9 +107,8 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         @Override
         public void onFinish() {
             text.setText("Time's Up!");
+            playDefaultNotificationSound();
             timerHasStarted = false;
-            //Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            //v.vibrate(500);
         }
         @Override
         public void onTick(long millisUntilfinished) {
