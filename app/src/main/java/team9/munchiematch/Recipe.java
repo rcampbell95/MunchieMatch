@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 
 public class Recipe {
+    String title;
     ArrayList<Pair<String, Ingredient>> recipeIngredients;
     ArrayList<Pair<String, String>> recipeSteps;
     Privacy recipeVisibility = Privacy.PUBLIC;
