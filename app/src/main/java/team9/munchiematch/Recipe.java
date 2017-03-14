@@ -16,6 +16,46 @@ public class Recipe {
     private Privacy recipeVisibility = Privacy.PRIVATE;
     private Bitmap picture;
 
+    public Recipe() {
+        ;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String newTitle) {
+        title = newTitle;
+    }
+
+    public void setIngredients(ArrayList<Pair<String, Ingredient>> userSubmittedIngredients) {
+        recipeIngredients = userSubmittedIngredients;
+    }
+
+    public boolean findIngredient(Ingredient searchIngredient) {
+        for(Pair<String, Ingredient> ingredientLine : recipeIngredients) {
+            if(ingredientLine.getSecond() == searchIngredient) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public MealType getRecipeMealType() {
+        return recipeMealType;
+    }
+
+    public void setRecipeMealType(MealType newRecipeMealType) {
+        recipeMealType = newRecipeMealType;
+    }
+
+    public void setPrivate() {
+        recipeVisibility = Privacy.PRIVATE;
+    }
+
+    public void setPublic() {
+        recipeVisibility = Privacy.PUBLIC;
+    }
 
     /*
     Private class that implements
@@ -23,7 +63,7 @@ public class Recipe {
     using generics
      */
 
-    private class Pair<K, E> {
+    public class Pair<K, E> {
         K first;
         E second;
 
