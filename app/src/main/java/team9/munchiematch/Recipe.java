@@ -12,6 +12,7 @@ public class Recipe {
     private String title;
     private ArrayList<Pair<String, Ingredient>> recipeIngredients;
     private ArrayList<Pair<String, String>> recipeSteps;
+    private MealType recipeMealType;
     private Privacy recipeVisibility = Privacy.PRIVATE;
     private Bitmap picture;
 
@@ -45,7 +46,11 @@ public class Recipe {
     in the user submitted recipe
      */
     private class Ingredient {
+        // Placeholder
+    }
 
+    private class MealType {
+        // Placeholder
     }
 
     private enum Privacy {PUBLIC, PRIVATE};
