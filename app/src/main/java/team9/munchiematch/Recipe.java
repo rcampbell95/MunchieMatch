@@ -1,5 +1,7 @@
 package team9.munchiematch;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 
 /**
@@ -7,10 +9,11 @@ import java.util.ArrayList;
  */
 
 public class Recipe {
-    String title;
-    ArrayList<Pair<String, Ingredient>> recipeIngredients;
-    ArrayList<Pair<String, String>> recipeSteps;
-    Privacy recipeVisibility = Privacy.PUBLIC;
+    private String title;
+    private ArrayList<Pair<String, Ingredient>> recipeIngredients;
+    private ArrayList<Pair<String, String>> recipeSteps;
+    private Privacy recipeVisibility = Privacy.PRIVATE;
+    private Bitmap picture;
 
 
     /*
