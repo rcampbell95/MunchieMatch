@@ -7,8 +7,10 @@ import java.util.ArrayList;
  */
 
 public class Recipe {
-    ArrayList<Pair> recipeIngredients;
-    ArrayList<Pair> recipeSteps;
+    ArrayList<Pair<String, Ingredient>> recipeIngredients;
+    ArrayList<Pair<String, String>> recipeSteps;
+    Privacy recipeVisibility = Privacy.PUBLIC;
+
 
     /*
     Private class that implements
@@ -41,6 +43,8 @@ public class Recipe {
     private class Ingredient {
 
     }
+
+    private enum Privacy {PUBLIC, PRIVATE};
 
 
 }
