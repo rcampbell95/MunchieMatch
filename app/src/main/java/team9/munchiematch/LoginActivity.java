@@ -1,4 +1,4 @@
-package munchiematch.munchiematch;
+package team9.munchiematch;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
