@@ -18,6 +18,7 @@ public class Recipe {
 
     public Recipe() {
         ;
+        ///TODO-- Add constuctor?
     }
 
     public String getTitle() {
@@ -86,15 +87,13 @@ public class Recipe {
     in the user submitted recipe
      */
     private class Ingredient {
-        // Placeholder
+        ///TODO-- Remove Placeholder
     }
 
     private class MealType {
-        // Placeholder
+        //TODO-- Remove Placeholder
     }
 
-    private enum Privacy {PUBLIC, PRIVATE};
-
-
+    private enum Privacy {PUBLIC, PRIVATE}
 }
 
