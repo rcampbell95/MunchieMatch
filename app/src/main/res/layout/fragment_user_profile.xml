@@ -22,7 +22,7 @@
         android:text="Name"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/profilePicture"
-        android:layout_alignEnd="@+id/likesButton" />
+        android:layout_alignEnd="@+id/matchesButton" />
 
     <Button
         android:id="@+id/settingsButton"
@@ -33,20 +33,20 @@
         android:text="Settings" />
 
     <Button
-        android:id="@+id/likesButton"
+        android:id="@+id/matchesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:text="Likes" />
+        android:text="Matches" />
 
     <Button
-        android:id="@+id/matchingButton"
+        android:id="@+id/recipeAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Matching"/>
+        android:text="Add Recipe"/>
 
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package team9.munchiematch;
 import android.graphics.Bitmap;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * Created by rober on 3/8/2017.
@@ -33,7 +34,7 @@ public class Recipe {
         recipeIngredients = userSubmittedIngredients;
     }
 
-    public boolean findIngredient(Ingredient searchIngredient) {
+    public boolean findIngredient(Ingredient searchIngredient, Comparator<Recipe> compareScheme) {
         for(Pair<String, Ingredient> ingredientLine : recipeIngredients) {
             if(ingredientLine.getSecond() == searchIngredient) {
                 return true;
