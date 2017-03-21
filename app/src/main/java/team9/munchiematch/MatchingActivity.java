@@ -12,5 +12,7 @@ public class MatchingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_matching);
     }
 
+// Need a way to read data from the database
+
 
 }
