@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <uses-permission android:name="android.permission.VIBRATE"/>
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,7 +21,6 @@
         </activity>
 
         <activity android:name=".IngredientSearch" />
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".UserAreaActivity" />
         <activity android:name=".TimerActivity"></activity>
 
