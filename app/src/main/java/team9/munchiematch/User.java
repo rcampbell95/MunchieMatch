@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class User {
     private ArrayList<Recipe> userRecipes;
     private ArrayList<Recipe> likedRecipes;
+
     //TODO Add "Matches" Field
     //TODO Add login information
 

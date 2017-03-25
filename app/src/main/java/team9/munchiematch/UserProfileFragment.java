@@ -24,10 +24,26 @@ public class UserProfileFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private static User currentUser;
+
     // TODO: Rename and change types of parameters
     private static String header;
 
     private OnFragmentInteractionListener mListener;
+
+    mAuthListener = new FirebaseAuth.AuthStateListener(){
+        @Override
+        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user != null) {
+                // User is signed in
+                Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+            } else {
+                // User is signed out
+                Log.d(TAG, "onAuthStateChanged:signed_out");
+            }
+        }
+    };
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -60,6 +76,12 @@ public class UserProfileFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -88,6 +110,14 @@ public class UserProfileFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     /**
