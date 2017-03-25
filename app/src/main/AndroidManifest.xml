@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="team9.munchiematch">
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,19 +11,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <uses-permission android:name="android.permission.VIBRATE"/>
+        <uses-permission android:name="android.permission.VIBRATE" />
 
         <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".IngredientSearch" />
         <activity android:name=".UserAreaActivity" />
-        <activity android:name=".TimerActivity"></activity>
-
+        <activity android:name=".TimerActivity" />
     </application>
 
 </manifest>
