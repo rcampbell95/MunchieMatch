@@ -22,13 +22,7 @@
         <activity android:name=".IngredientSearch" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserAreaActivity" />
-
-        <activity android:name=".TimerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".TimerActivity"></activity>
 
 =======
                 <category android:name="android.intent.category.LAUNCHER" />
