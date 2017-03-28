@@ -30,6 +30,10 @@ public class Recipe {
         title = newTitle;
     }
 
+    public Bitmap getPicture() {
+        return picture;
+    }
+
     public void setIngredients(ArrayList<Pair<String, Ingredient>> userSubmittedIngredients) {
         recipeIngredients = userSubmittedIngredients;
     }
