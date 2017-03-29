@@ -8,18 +8,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="munchiematch.munchiematch.LoginActivity">
+    tools:context="team9.munchiematch.RegisterActivity">
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName" />
+        android:ems="15"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/etUserName"
@@ -27,9 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/etName"
-        android:ems="10"
-        android:hint="Username"
+        android:layout_below="@+id/etEmail"
+        android:ems="15"
+        android:hint="@string/username"
         android:inputType="textPersonName" />
 
     <EditText
@@ -39,8 +39,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etUserName"
-        android:ems="10"
-        android:hint="Password"
+        android:ems="15"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <EditText
@@ -50,8 +50,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etPassword"
-        android:ems="10"
-        android:hint="Age"
+        android:ems="15"
+        android:hint="@string/age"
         android:inputType="number" />
 
     <Button
@@ -61,5 +61,17 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etAge"
-        android:text="Register" />
+        android:text="register user" />
+
+    <TextView
+        android:textAlignment="center"
+        android:text="@string/already_registered_sign_in_here"
+        android:id="@+id/textViewSignin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+
+
 </RelativeLayout>
