@@ -1,5 +1,9 @@
 package team9.munchiematch;
 
+import android.net.Uri;
+
+import com.google.firebase.auth.FirebaseUser;
+
 import java.net.URI;
 import java.util.ArrayList;
 
@@ -26,11 +30,11 @@ public class User {
     }
 
     public String getUserName() {
-        loggedInUser.getDisplayName();
+        return loggedInUser.getDisplayName();
     }
 
     public Uri getProfilePicture() {
-        loggedInUser.getPhotoUrl();
+        return loggedInUser.getPhotoUrl();
     }
 
     public void addLikedRecipe(Recipe newLikeRecipe) {
