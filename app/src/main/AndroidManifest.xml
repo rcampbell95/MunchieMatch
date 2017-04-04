@@ -21,8 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".IngredientSearch" />
+        <activity android:name=".NavigationActivity" />
         <activity android:name=".UserAreaActivity" />
         <activity android:name=".TimerActivity" />
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

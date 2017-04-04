@@ -1,6 +1,7 @@
 package team9.munchiematch;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -106,6 +107,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         //profile activity start the profile
                         //right now let's display a toast
                         Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+
+                        Intent navigateIntent = new Intent(RegisterActivity.this, NavigationActivity.class);
+                        startActivity(navigateIntent);
                     }
                     else{
                         Toast.makeText(RegisterActivity.this, "Could not register...Please try again.", Toast.LENGTH_SHORT).show();
