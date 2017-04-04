@@ -88,6 +88,7 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        mAuth = mAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
     }
 
