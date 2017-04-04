@@ -8,11 +8,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class MatchingActivity extends AppCompatActivity {
 
     public TextView recipeTitle;
     public TextView likeDislikeStatus;
     public ImageView recipeImage;
+    private StorageReference recipeDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,8 @@ public class MatchingActivity extends AppCompatActivity {
         recipeImage = (ImageView) this.findViewById(R.id.recipeImage);
         likeDislikeStatus = (TextView) this.findViewById(R.id.likeDislikeStatus);
         likeDislikeStatus.setText("");
+        recipeDatabase = FirebaseStorage.getInstance().getReference();
+
     }
 
     public void goToSettings(View view) {
@@ -60,6 +66,12 @@ public class MatchingActivity extends AppCompatActivity {
             }
         }, 1000); // sets delay before updating picture and text
     }
+    // robert has a recipeObject.getTitle();
+    // call recipeObject.getPicture();
+
+
+
+
     public void delayedStatus (int seconds, final String status, final String color){
         likeDislikeStatus.setVisibility(View.VISIBLE);
         likeDislikeStatus.setTextColor(Color.parseColor(color));
