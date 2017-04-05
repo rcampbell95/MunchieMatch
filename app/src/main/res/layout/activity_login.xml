@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="team9.munchiematch.LoginActivity">
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textSize="28sp"
+            android:textAlignment="center"
+            android:text="Munchie User Login" />
+
+        <EditText
+            android:ems="10"
+            android:hint="Enter email"
+            android:id="@+id/etEmailAddress"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="15dp"/>
+
+        <EditText
+            android:ems="10"
+            android:hint="Enter Password"
+            android:id="@+id/etPassword"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"/>
+
+        <Button
+            android:text="Signin"
+            android:id="@+id/bSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:text="Don't have an account? Signup Here"
+            android:id="@+id/tvSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
