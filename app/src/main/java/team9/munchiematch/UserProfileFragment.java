@@ -48,7 +48,7 @@ public class UserProfileFragment extends Fragment {
             if (user != null) {
                 // User is signed in
                 Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                currentUser = new User(user);
+                currentUser = User.getInstance(user);
             } else {
                 // User is signed out
                 Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -94,7 +94,7 @@ public class UserProfileFragment extends Fragment {
         mAuth = mAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
 
-        User currentUser = new User(mAuth.getCurrentUser());
+        User currentUser = User.getInstance(mAuth.getCurrentUser());
         userNameField.setText(currentUser.getUserName());
     }
 

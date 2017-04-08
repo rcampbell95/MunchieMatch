@@ -17,6 +17,8 @@ public class User {
 
     private FirebaseUser loggedInUser;
     //TODO Add login information
+    private String userName;
+    private int userAge;
 
     private static User instance;
 
@@ -27,7 +29,7 @@ public class User {
         loggedInUser = currentUser;
     }
 
-    public User getInstance(FirebaseUser currentUser) {
+    public static User getInstance(FirebaseUser currentUser) {
         if(instance == null) {
             instance = new User(currentUser);
             return instance;
@@ -49,5 +51,13 @@ public class User {
 
     public void addLikedRecipe(Recipe newLikeRecipe) {
         likedRecipes.add(newLikeRecipe);
+    }
+
+    public void setName(final String name) {
+        userName = name;
+    }
+
+    public void setAge(final int age) {
+        this.userAge = age;
     }
 }
