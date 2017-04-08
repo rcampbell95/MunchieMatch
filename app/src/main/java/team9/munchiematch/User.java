@@ -8,7 +8,7 @@ import java.net.URI;
 import java.util.ArrayList;
 
 /**
- * Created by rober on 3/18/2017.
+ * Created by robert on 3/18/2017.
  */
 
 public class User {
