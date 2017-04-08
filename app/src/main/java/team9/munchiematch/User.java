@@ -18,11 +18,21 @@ public class User {
     private FirebaseUser loggedInUser;
     //TODO Add login information
 
-    public User(FirebaseUser currentUser) {
+    private static User instance;
+
+    private User(FirebaseUser currentUser) {
         userRecipes = new ArrayList<Recipe>();
         likedRecipes = new ArrayList<Recipe>();
 
         loggedInUser = currentUser;
+    }
+
+    public User getInstance(FirebaseUser currentUser) {
+        if(instance == null) {
+            instance = new User(currentUser);
+            return instance;
+        }
+        else return instance;
     }
 
     public void addRecipe(Recipe newRecipe) {
