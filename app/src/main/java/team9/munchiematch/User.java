@@ -18,7 +18,7 @@ public class User {
     private FirebaseUser loggedInUser;
     //TODO Add login information
     private String userName;
-    private int userAge;
+    private String userAge;
 
     private static User instance;
 
@@ -42,7 +42,7 @@ public class User {
     }
 
     public String getUserName() {
-        return loggedInUser.getDisplayName();
+        return userName;
     }
 
     public Uri getProfilePicture() {
@@ -57,7 +57,7 @@ public class User {
         userName = name;
     }
 
-    public void setAge(final int age) {
+    public void setAge(final String age) {
         this.userAge = age;
     }
 }
