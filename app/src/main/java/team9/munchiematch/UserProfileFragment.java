@@ -106,8 +106,11 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
             startActivity(new Intent(this, LoginActivity.class));
         }
 
+        FirebaseUser user = mAuth.getCurrentUser();
+
         User currentUser = User.getInstance(mAuth.getCurrentUser());
         userNameField.setText(currentUser.getUserName());
+
 
         buttonLogout.setOnClickListener(this);
 
@@ -161,7 +164,12 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
+
+        if(view == buttonLogout){
+            mAuth.signOut();
+        }
+
 
     }
 
