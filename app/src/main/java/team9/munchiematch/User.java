@@ -15,14 +15,26 @@ public class User {
     private ArrayList<Recipe> userRecipes;
     private ArrayList<Recipe> likedRecipes;
 
-    FirebaseUser loggedInUser;
+    private FirebaseUser loggedInUser;
     //TODO Add login information
+    private String userName;
+    private String userAge;
 
-    public User(FirebaseUser currentUser) {
+    private static User instance;
+
+    private User(FirebaseUser currentUser) {
         userRecipes = new ArrayList<Recipe>();
         likedRecipes = new ArrayList<Recipe>();
 
         loggedInUser = currentUser;
+    }
+
+    public static User getInstance(FirebaseUser currentUser) {
+        if(instance == null) {
+            instance = new User(currentUser);
+            return instance;
+        }
+        else return instance;
     }
 
     public void addRecipe(Recipe newRecipe) {
@@ -30,7 +42,7 @@ public class User {
     }
 
     public String getUserName() {
-        return loggedInUser.getDisplayName();
+        return userName;
     }
 
     public Uri getProfilePicture() {
@@ -39,5 +51,13 @@ public class User {
 
     public void addLikedRecipe(Recipe newLikeRecipe) {
         likedRecipes.add(newLikeRecipe);
+    }
+
+    public void setName(final String name) {
+        userName = name;
+    }
+
+    public void setAge(final String age) {
+        this.userAge = age;
     }
 }
