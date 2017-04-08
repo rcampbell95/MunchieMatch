@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_matching"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="team9.munchiematch.MatchingActivity">
+
+
+    <ImageButton
+        android:id="@+id/cancelButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignStart="@+id/recipeImage"
+        android:layout_alignTop="@+id/matchButton"
+        android:background="@drawable/ic_cancel_black_24px"
+        android:onClick="xMarkPressed" />
+
+    <ImageButton
+        android:id="@+id/matchButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignEnd="@+id/recipeImage"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ic_check_circle_black_24px"
+        android:onClick="checkMarkPressed" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_settings_black_24px"
+        android:onClick="goToSettings" />
+
+    <ImageButton
+        android:id="@+id/heartButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_heart"
+        android:onClick="goToProfile" />
+
+    <ImageView
+        android:id="@+id/recipeImage"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@color/colorAccent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/recipeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:text="@string/recipeText"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_above="@+id/recipeImage"
+        android:layout_alignStart="@+id/recipeImage"
+        android:layout_alignEnd="@+id/recipeImage" />
+
+    <TextView
+        android:id="@+id/likeDislikeStatus"
+        android:layout_width="110sp"
+        android:layout_height="70sp"
+        android:text="@string/likeDislikeStatus"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:layout_alignBottom="@+id/cancelButton"
+        android:layout_toEndOf="@+id/cancelButton" />
+
+</RelativeLayout>

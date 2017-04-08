@@ -32,19 +32,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private FirebaseAuth firebaseAuth;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login_screen);
 
         //initializing firebase auth object
         firebaseAuth = firebaseAuth.getInstance();
-
-        if(firebaseAuth.getCurrentUser() != null){
-            //profile activity here When user is login
-            finish();
-            startActivity(new Intent(getApplicationContext(), UserProfileFragment.class));
-        }
 
         progressDialog = new ProgressDialog(this);
 
@@ -110,14 +105,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     if(task.isSuccessful()){
                         //user is successfully registered and logged in
                         //profile activity start the profile
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), UserProfileFragment.class));
-                        }
+                        //right now let's display a toast
+                        Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
 
+                        Intent navigateIntent = new Intent(RegisterActivity.this, NavigationActivity.class);
+                        startActivity(navigateIntent);
+                    }
                     else{
                         Toast.makeText(RegisterActivity.this, "Could not register...Please try again.", Toast.LENGTH_SHORT).show();
                     }
-                    progressDialog.dismiss();
                 }
             });
 
