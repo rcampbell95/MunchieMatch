@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_screen);
+        setContentView(R.layout.activity_register);
 
         //initializing firebase auth object
         firebaseAuth = firebaseAuth.getInstance();
@@ -63,12 +63,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     //RegisterUser() method implementation
     private void registerUser(){
-        String email = editTextEmail.getText().toString().trim();
-        String username = editTextUsername.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
+        final String username = editTextUsername.getText().toString().trim();
 
-        String password = editTextPassword.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
 
-        String age = editTextAge.getText().toString().trim();
+        final String age = editTextAge.getText().toString().trim();
 
         //check if fields are empty
         if(TextUtils.isEmpty(email)){
@@ -107,6 +107,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         //profile activity start the profile
                         //right now let's display a toast
                         Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+
+                        User currentUser = User.getInstance(firebaseAuth.getCurrentUser());
+                        currentUser.setName(username);
+                        currentUser.setAge(age);
 
                         Intent navigateIntent = new Intent(RegisterActivity.this, NavigationActivity.class);
                         startActivity(navigateIntent);

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="team9.munchiematch">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,16 +14,20 @@
 
         <activity android:name=".RegisterActivity">
             //Copy and Paste intent filter to run
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".IngredientSearch" />
         <activity android:name=".NavigationActivity" />
         <activity android:name=".TimerActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".RecipeSubmissionActivity"
+            android:label="@string/title_activity_recipe_submission"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
