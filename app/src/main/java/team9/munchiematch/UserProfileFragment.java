@@ -9,10 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -38,7 +41,13 @@ public class UserProfileFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    // TODO: Brent ButtonLogout
     private FirebaseAuth mAuth;
+
+
+    private TextView textViewUserEmail;
+    private Button buttonLogout;
+    //TODO: EMAILLLLLL in login 13:33
 
     FirebaseAuth.AuthStateListener mAuthListener = new FirebaseAuth.AuthStateListener(){
         @Override
@@ -83,6 +92,7 @@ public class UserProfileFragment extends Fragment {
         if (getArguments() != null) {
             header = getArguments().getString(ARG_PARAM1);
         }
+
     }
 
     @Override
