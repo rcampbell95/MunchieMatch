@@ -30,8 +30,9 @@ public class UserProfileFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private static final String TAG = "User Profile";
+    private TextView userNameField;
 
-    private static User currentUser;
+    public static User currentUser;
 
     // TODO: Rename and change types of parameters
     private static String header;
@@ -83,6 +84,8 @@ public class UserProfileFragment extends Fragment {
         if (getArguments() != null) {
             header = getArguments().getString(ARG_PARAM1);
         }
+
+
     }
 
     @Override
@@ -90,13 +93,19 @@ public class UserProfileFragment extends Fragment {
         super.onStart();
         mAuth = mAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
+
+        User currentUser = new User(mAuth.getCurrentUser());
+        userNameField.setText(currentUser.getUserName());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_profile, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
+        userNameField = (TextView) rootView.findViewById(R.id.userName);
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

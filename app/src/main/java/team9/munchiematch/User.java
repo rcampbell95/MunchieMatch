@@ -15,7 +15,7 @@ public class User {
     private ArrayList<Recipe> userRecipes;
     private ArrayList<Recipe> likedRecipes;
 
-    FirebaseUser loggedInUser;
+    private FirebaseUser loggedInUser;
     //TODO Add login information
 
     public User(FirebaseUser currentUser) {
