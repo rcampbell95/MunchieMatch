@@ -64,11 +64,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     //RegisterUser() method implementation
     private void registerUser(){
         String email = editTextEmail.getText().toString().trim();
-        final String username = editTextUsername.getText().toString().trim();
+        String username = editTextUsername.getText().toString().trim();
 
         String password = editTextPassword.getText().toString().trim();
 
-        final String age = editTextAge.getText().toString().trim();
+        String age = editTextAge.getText().toString().trim();
 
         //check if fields are empty
         if(TextUtils.isEmpty(email)){
@@ -107,11 +107,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         //profile activity start the profile
                         //right now let's display a toast
                         Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-
-                        User currentUser = User.getInstance(firebaseAuth.getCurrentUser());
-                        currentUser.setName(username);
-                        currentUser.setAge(age);
-
 
                         Intent navigateIntent = new Intent(RegisterActivity.this, NavigationActivity.class);
                         startActivity(navigateIntent);

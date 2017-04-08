@@ -32,11 +32,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //initializing firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
 
+
+
         //Check if user is logged in
-        if(firebaseAuth.getCurrentUser()  != null){
-            //profile activity here
+        if(firebaseAuth.getCurrentUser() != null){
+            //profile activity here When user is login
+            finish();
+            startActivity(new Intent(getApplicationContext(), UserProfileFragment.class));
         }
 
         etEmail = (EditText) findViewById(R.id.etEmail);
@@ -57,30 +62,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = etPassword.getText().toString().trim();
 
 
-        //check if fields are empty
+        //check if email and passwords fields are empty
         if(TextUtils.isEmpty(email)){
             //email is empty
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
             //stopping the function execution further
             return;
         }
-//        if(TextUtils.isEmpty(username)){
-//            //username field is empty
-//            Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+
         if(TextUtils.isEmpty(password)){
             //password is empty
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
             return;
         }
-//        if(TextUtils.isEmpty(age)){
-//            //age is empty
-//            Toast.makeText(this, "Please enter age", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-        //if validations are ok
-        //we will first show a progressbar
 
         progressDialog.setMessage("Registering User...");
         progressDialog.show(); // Show the message dialog
@@ -94,6 +88,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         if(task.isSuccessful()){
                             //start profile activity
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), UserProfileFragment.class));
                         }
                     }
                 });

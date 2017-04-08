@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/profilePicture"
         android:layout_alignEnd="@+id/matchesButton" />
@@ -47,6 +48,24 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="Add Recipe"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logout"
+        android:id="@+id/buttonLogout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textViewUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:layout_below="@+id/userName"
+        android:layout_alignStart="@+id/userName" />
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+
 
 
 </RelativeLayout>

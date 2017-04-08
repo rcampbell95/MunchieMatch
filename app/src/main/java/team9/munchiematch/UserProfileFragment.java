@@ -30,9 +30,8 @@ public class UserProfileFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private static final String TAG = "User Profile";
-    private TextView userNameField;
 
-    public static User currentUser;
+    private static User currentUser;
 
     // TODO: Rename and change types of parameters
     private static String header;
@@ -48,7 +47,7 @@ public class UserProfileFragment extends Fragment {
             if (user != null) {
                 // User is signed in
                 Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                currentUser = User.getInstance(user);
+                currentUser = new User(user);
             } else {
                 // User is signed out
                 Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -84,8 +83,6 @@ public class UserProfileFragment extends Fragment {
         if (getArguments() != null) {
             header = getArguments().getString(ARG_PARAM1);
         }
-
-
     }
 
     @Override
@@ -93,19 +90,13 @@ public class UserProfileFragment extends Fragment {
         super.onStart();
         mAuth = mAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
-
-        User currentUser = User.getInstance(mAuth.getCurrentUser());
-        userNameField.setText(currentUser.getUserName());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
-        userNameField = (TextView) rootView.findViewById(R.id.userName);
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_user_profile, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
