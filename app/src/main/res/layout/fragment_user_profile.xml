@@ -47,7 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Add Recipe"/>
+        android:text="Add Recipe"
+        android:onClick="addRecipe"/>
 
     <Button
         android:layout_width="wrap_content"

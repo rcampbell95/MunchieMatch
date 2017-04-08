@@ -1,6 +1,7 @@
 package team9.munchiematch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +33,7 @@ public class UserProfileFragment extends Fragment {
 
     private static final String TAG = "User Profile";
     private TextView userNameField;
+    private Button addRecipeButton;
 
     public static User currentUser;
 
@@ -104,6 +107,8 @@ public class UserProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
         userNameField = (TextView) rootView.findViewById(R.id.userName);
+
+        addRecipeButton = (Button) rootView.findViewById(R.id.recipeAddButton);
 
         return rootView;
     }

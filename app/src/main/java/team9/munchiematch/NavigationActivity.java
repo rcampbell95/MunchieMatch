@@ -165,6 +165,11 @@ LikedRecipesFragment.OnFragmentInteractionListener {
         }
     }
 
+    public void addRecipe(View view) {
+        Intent intent = new Intent(this, RecipeSubmissionActivity.class);
+        startActivity(intent);
+    }
+
     public void onFragmentInteraction(Uri uri) {
         // TODO -- implement for action between fragments
     }
