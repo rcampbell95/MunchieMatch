@@ -31,13 +31,13 @@ public class MatchingActivity extends AppCompatActivity {
     }
 
     public void goToSettings(View view) {
-       Intent intent = new Intent(this, LoginActivity.class);
+       Intent intent = new Intent(this, FiltersFragment.class);
        startActivity(intent);
         // goes to Settings activity when gear button is tapped.
     }
 
     public void goToProfile(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, User.class);
         // will need to be changed to UserProfileActivity.class in the future
         startActivity(intent);
         // goes to Profile activity when gear button is tapped.
