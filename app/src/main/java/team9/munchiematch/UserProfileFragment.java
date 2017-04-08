@@ -1,6 +1,7 @@
 package team9.munchiematch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,15 +25,19 @@ import com.google.firebase.auth.FirebaseUser;
  * Use the {@link UserProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserProfileFragment extends Fragment {
+public class UserProfileFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private static final String TAG = "User Profile";
+    private TextView userNameField;
 
-    private static User currentUser;
+    public static User currentUser;
+
+    private TextView textViewUserEmail;
+    private Button buttonLogout;
 
     // TODO: Rename and change types of parameters
     private static String header;
@@ -47,7 +53,7 @@ public class UserProfileFragment extends Fragment {
             if (user != null) {
                 // User is signed in
                 Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                currentUser = new User(user);
+                currentUser = User.getInstance(user);
             } else {
                 // User is signed out
                 Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -80,7 +86,11 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+
+
+
+
+       if (getArguments() != null) {
             header = getArguments().getString(ARG_PARAM1);
         }
     }
@@ -90,13 +100,32 @@ public class UserProfileFragment extends Fragment {
         super.onStart();
         mAuth = mAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
+
+        if(mAuth.getCurrentUser() == null) {
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
+        User currentUser = User.getInstance(mAuth.getCurrentUser());
+        userNameField.setText(currentUser.getUserName());
+
+        buttonLogout.setOnClickListener(this);
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_profile, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
+        userNameField = (TextView) rootView.findViewById(R.id.userName);
+
+        textViewUserEmail = (TextView) rootView.findViewById(R.id.textViewUserEmail);
+        buttonLogout = (Button) rootView.findViewById(R.id.buttonLogout);
+
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -129,6 +158,11 @@ public class UserProfileFragment extends Fragment {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /**
