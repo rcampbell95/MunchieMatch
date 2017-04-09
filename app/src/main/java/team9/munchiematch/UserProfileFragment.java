@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -101,10 +102,10 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
         mAuth = mAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
 
-        if(mAuth.getCurrentUser() == null) {
-            finish();
-            startActivity(new Intent(this, LoginActivity.class));
-        }
+//        if(mAuth.getCurrentUser() == null) {
+//            finish();
+//            startActivity(new Intent(this, LoginActivity.class));
+//        }
 
         FirebaseUser user = mAuth.getCurrentUser();
 
@@ -163,15 +164,12 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
         }
     }
 
+
     @Override
-    public void onClick(View view) {
-
-        if(view == buttonLogout){
-            mAuth.signOut();
-        }
-
+    public void onClick(View v) {
 
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -183,7 +181,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }

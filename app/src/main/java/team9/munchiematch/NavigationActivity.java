@@ -19,7 +19,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import static team9.munchiematch.R.id.buttonLogout;
+import static team9.munchiematch.R.id.start;
 
 public class NavigationActivity extends AppCompatActivity implements UserProfileFragment.OnFragmentInteractionListener,
 LikedRecipesFragment.OnFragmentInteractionListener {
@@ -39,11 +46,29 @@ LikedRecipesFragment.OnFragmentInteractionListener {
      */
     private ViewPager mViewPager;
 
+    private FirebaseAuth firebaseAuth;
+
+    private TextView textViewUserEmail;
+    private Button buttonLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         Intent intent = getIntent();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        if(firebaseAuth.getCurrentUser() == null){
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
+
+        //TODO: Finish Logout Method 15:21
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -164,6 +189,7 @@ LikedRecipesFragment.OnFragmentInteractionListener {
             return null;
         }
     }
+
 
     public void onFragmentInteraction(Uri uri) {
         // TODO -- implement for action between fragments
