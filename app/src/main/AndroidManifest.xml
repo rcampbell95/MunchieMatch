@@ -14,17 +14,18 @@
 
         <activity android:name=".RegisterActivity">
             //Copy and Paste intent filter to run
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".IngredientSearch" />
         <activity android:name=".NavigationActivity" />
         <activity android:name=".UserAreaActivity" />
         <activity android:name=".TimerActivity" />
         <activity android:name=".MainActivity"/>
-        <activity android:name=".MatchingActivity"/>
+        <activity android:name=".MatchingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

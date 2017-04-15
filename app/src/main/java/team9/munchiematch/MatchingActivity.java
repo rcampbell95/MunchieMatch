@@ -7,16 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import team9.munchiematch.LocalRecipeObject;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+
 public class MatchingActivity extends AppCompatActivity {
 
+    public ArrayList<LocalRecipeObject> recipeList = new ArrayList<LocalRecipeObject>();
     public TextView recipeTitle;
     public TextView likeDislikeStatus;
     public ImageView recipeImage;
+    boolean dislikedPressed = false;
+    public int index = 0;
     private StorageReference recipeDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +35,18 @@ public class MatchingActivity extends AppCompatActivity {
         recipeImage = (ImageView) this.findViewById(R.id.recipeImage);
         likeDislikeStatus = (TextView) this.findViewById(R.id.likeDislikeStatus);
         likeDislikeStatus.setText("");
-        recipeDatabase = FirebaseStorage.getInstance().getReference();
-
+        recipeList.add(new LocalRecipeObject(R.drawable.bacon_guacamolegrilled_cheese_sandwich, "Bacon Sandwich"));
+        recipeList.add(new LocalRecipeObject(R.drawable.berry_ice_lemonade, "Berry Ice Lemonade"));
+        recipeList.add(new LocalRecipeObject(R.drawable.choco_chip_oreo_cookies, "Oreo Cookies"));
+        recipeList.add(new LocalRecipeObject(R.drawable.fettuccine_alfredo, "Fettuccine Alfredo"));
+        recipeList.add(new LocalRecipeObject(R.drawable.herb_parmesan_french_fries, "Herb French Fries"));
+        recipeList.add(new LocalRecipeObject(R.drawable.mango_chicken_tenders, "Mango Chicken Tenders"));
+        recipeList.add(new LocalRecipeObject(R.drawable.mini_deep_dish_pizza, "Mini Deep Dish Pizza"));
+        recipeList.add(new LocalRecipeObject(R.drawable.portobello_pesto_pizza, "Portebello Pesto Pizza"));
+        recipeList.add(new LocalRecipeObject(R.drawable.spinich_tempeh_dumplings, "Spinach Tempeh Dumplings"));
+        recipeList.add(new LocalRecipeObject(R.drawable.sweet_n_sour_chicken, "Sweet N Sour Chicken"));
+        Collections.shuffle(recipeList); // Initially shuffle the recipe list...
+        loadNextRecipe(); // load initial recipe
     }
 
     public void goToSettings(View view) {
@@ -46,31 +65,50 @@ public class MatchingActivity extends AppCompatActivity {
     public void checkMarkPressed(View v){
         //removes this item from future selects
         delayedStatus(500, "Liked", "#458B00");
-        loadNextRecipe("Black Circle Recipe");
+        loadNextRecipe();
     }
 
     public void xMarkPressed (View v){
-        //save likes into User Profile for retrieval later
+        dislikedPressed = true;
         delayedStatus(500, "Disliked", "#FF0000");
-        loadNextRecipe("Black Circle Recipe Again...");
+        loadNextRecipe();
     }
 
     //Ideally contains picture/title/recipe
     //There has to be some methods to navigate the database and retrieve items from them
-    public void loadNextRecipe(final String titleOfRecipe){
+    public void loadNextRecipe(){
         recipeTitle.postDelayed(new Runnable() {
             @Override
             public void run () {
-                recipeTitle.setText(titleOfRecipe);
-                recipeImage.setImageResource(R.drawable.ic_check_circle_black_24px); //change to picture in database...
+                if (recipeList.isEmpty()) {
+                    recipeTitle.setText("No more items left...");
+                    recipeImage.setImageResource(android.R.color.transparent);
+                }
+                else {
+                    if (dislikedPressed){
+                        recipeList.remove(index); // delete object from arraylist if disliked...
+                        dislikedPressed = false;
+                        recipeTitle.setText(recipeList.get(index).recipeTitle);
+                        recipeImage.setImageResource(recipeList.get(index).recipeImageID);
+                        if (index >= recipeList.size() - 1) {
+                            Collections.shuffle(recipeList);
+                            index = 0;
+                        }
+                        index++;
+                    }
+                    else{
+                        recipeTitle.setText(recipeList.get(index).recipeTitle);
+                        recipeImage.setImageResource(recipeList.get(index).recipeImageID);
+                        if (index >= recipeList.size() - 1) {
+                            Collections.shuffle(recipeList);
+                            index = 0;
+                        }
+                        index++;
+                    }
+                }
             }
-        }, 1000); // sets delay before updating picture and text
+        }, 750); // sets delay before updating picture and text
     }
-    // robert has a recipeObject.getTitle();
-    // call recipeObject.getPicture();
-
-
-
 
     public void delayedStatus (int seconds, final String status, final String color){
         likeDislikeStatus.setVisibility(View.VISIBLE);
