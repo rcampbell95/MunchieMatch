@@ -24,7 +24,6 @@
         <activity android:name=".IngredientSearch" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".NavigationActivity" />
-        <activity android:name=".MainActivity"/>
         <activity android:name=".TimerActivity"/>
     </application>
 

@@ -127,5 +127,5 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    Intent intent = getIntent(); //For MainActivity to Link to This Activity
+    //Intent intent = getIntent(); //For MainActivity to Link to This Activity
 }
