@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <uses-permission android:name="android.permission.VIBRATE" />
 
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".LoginActivity">
             //Copy and Paste intent filter to run
 
             <intent-filter>
@@ -22,9 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".IngredientSearch" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".NavigationActivity" />
-        <activity android:name=".TimerActivity" />
         <activity android:name=".MainActivity"/>
+        <activity android:name=".TimerActivity"/>
     </application>
 
 </manifest>
