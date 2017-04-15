@@ -85,29 +85,31 @@ public class MatchingActivity extends AppCompatActivity {
                     recipeImage.setImageResource(android.R.color.transparent);
                 }
                 else {
-                    if (dislikedPressed){
+                    if (dislikedPressed == true){
                         recipeList.remove(index); // delete object from arraylist if disliked...
+                        recipeList.trimToSize(); // shrink array list
                         dislikedPressed = false;
+                        // then display next object
                         recipeTitle.setText(recipeList.get(index).recipeTitle);
                         recipeImage.setImageResource(recipeList.get(index).recipeImageID);
-                        if (index >= recipeList.size() - 1) {
+                        if (index < 0 || index >= recipeList.size()) { //case where iterator is greater than index last element
                             Collections.shuffle(recipeList);
                             index = 0;
                         }
-                        index++;
                     }
                     else{
                         recipeTitle.setText(recipeList.get(index).recipeTitle);
                         recipeImage.setImageResource(recipeList.get(index).recipeImageID);
-                        if (index >= recipeList.size() - 1) {
+                        index++;
+                        if (index < 0 || index >= recipeList.size()) {
                             Collections.shuffle(recipeList);
                             index = 0;
                         }
-                        index++;
+
                     }
                 }
             }
-        }, 750); // sets delay before updating picture and text
+        }, 500); // sets delay before updating picture and text
     }
 
     public void delayedStatus (int seconds, final String status, final String color){
