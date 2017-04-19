@@ -30,12 +30,12 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mealTypeDropDown = (Spinner) this.findViewById(R.id.mealTypeChoices);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.mealTypes, android.R.layout.simple_spinner_item);
+        mealTypeDropDown.setAdapter(new ArrayAdapter<MealType>(this, android.R.layout.simple_spinner_item, MealType.values()));
+
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        mealTypeDropDown.setAdapter(adapter);
+        //mealTypeDropDown.setAdapter(adapter);
 
         addIngredient = (Button) this.findViewById(R.id.addIngredientButton);
         addRecipeStep = (Button) this.findViewById(R.id.addStepButton);
