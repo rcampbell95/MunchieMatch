@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.content.Intent;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,13 +21,13 @@ public class IngredientSearch extends AppCompatActivity {
     MaterialSearchView searchView;
     ListView lstView;
 
-    String[] lstSource = {
+    public static void main(String[] args) {
+        Ingredient i1 = new Ingredient(Ingredient_Type.dairy, "American Cheese", Ingredient_Measurement.slices);
+        Ingredient i2 = new Ingredient(Ingredient_Type.bread, "White Bread", Ingredient_Measurement.slices);
+        Ingredient i3 = new Ingredient(Ingredient_Type.meat, "Sliced Ham", Ingredient_Measurement.slices);
 
-            "fuck",
-            "yo",
-            "couch",
-            "Niggah",
-
+        List<Ingredient> ingredients = Arrays.asList(i1,i2,i3);
+        List<Ingredient> results = new ArrayList<>();
     };
 
     @Override
