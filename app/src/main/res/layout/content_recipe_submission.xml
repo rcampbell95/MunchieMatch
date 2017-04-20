@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name" />
+                android:text="Recipe Title" />
 
             <EditText
                 android:id="@+id/recipeTitle"
@@ -39,6 +39,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/recipeIngredientLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -46,14 +47,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/ingredientText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Ingredient" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/ingredientChoice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -61,14 +62,14 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/recipeQuantityText"
+                android:id="@+id/quantityText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Quantity" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/ingredientQuantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -82,24 +83,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Ingredient" />
+            android:text="Add Ingredient"
+            android:onClick="addIngredient"/>
 
         <LinearLayout
+            android:id="@+id/recipeStepLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="5dp"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/recipeDescriptionPrompt"
+                android:id="@+id/descriptionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Step Description" />
 
             <EditText
-                android:id="@+id/recipeDescriptionText"
+                android:id="@+id/recipeDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -107,14 +110,14 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/timeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Time Needed" />
 
             <EditText
-                android:id="@+id/recipeStepTime"
+                android:id="@+id/stepTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -127,7 +130,8 @@
             android:id="@+id/addStepButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Step" />
+            android:text="Add Step"
+            android:onClick="addStep"/>
 
         <Spinner
             android:id="@+id/mealTypeChoices"

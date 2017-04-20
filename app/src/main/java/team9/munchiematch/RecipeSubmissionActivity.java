@@ -11,7 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 //import munchiematch.munchiematch.R;
 
@@ -21,6 +24,8 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
     private Button addIngredient;
     private Button addRecipeStep;
     private Button addPicture;
+    private LinearLayout ingredientList;
+    private LinearLayout stepList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,8 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         addRecipeStep = (Button) this.findViewById(R.id.addStepButton);
         addPicture = (Button) this.findViewById(R.id.pictureUpload);
 
-
+        ingredientList = (LinearLayout) this.findViewById(R.id.recipeIngredientLayout);
+        stepList = (LinearLayout) this.findViewById(R.id.recipeStepLayout);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -72,6 +78,41 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
             // in recipe class
         }
     }
+
+    //TODO -- implement addIngredient and addStep functions
+    //TODO -- make new TextView and EditView children of corresponding LinearLayout
+    public void addIngredient(View view) {
+        TextView ingredientText = new TextView(this);
+        ingredientText.setText("Ingredient");
+        ingredientList.addView(ingredientText);
+
+        EditText ingredient = new EditText(this);
+        ingredientList.addView(ingredient);
+
+        TextView quantityText = new TextView(this);
+        quantityText.setText("Quantity");
+        ingredientList.addView(quantityText);
+
+        EditText quantity = new EditText(this);
+        ingredientList.addView(quantity);
+    }
+
+    public void addStep(View view) {
+        TextView descriptionText = new TextView(this);
+        descriptionText.setText("Step Description");
+        stepList.addView(descriptionText);
+
+        EditText description = new EditText(this);
+        stepList.addView(description);
+
+        TextView timeText = new TextView(this);
+        timeText.setText("Time Needed");
+        stepList.addView(timeText);
+
+        EditText stepTime = new EditText(this);
+        stepList.addView(stepTime);
+    }
+
 
     public void takePicture(View view) {
         dispatchTakePictureIntent();
