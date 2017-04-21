@@ -44,8 +44,8 @@ public class IngredientSearch extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
 
         lstView = (ListView) findViewById(R.id.lstView);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lstSource);
-        lstView.setAdapter(adapter);
+        //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lstSource);
+        //lstView.setAdapter(adapter);
 
 
         searchView = (MaterialSearchView) findViewById(R.id.search_view);
@@ -61,8 +61,8 @@ public class IngredientSearch extends AppCompatActivity {
 
                 //If closed Search View , lstView will return default
                 lstView = (ListView) findViewById(R.id.lstView);
-                ArrayAdapter adapter = new ArrayAdapter(IngredientSearch.this, android.R.layout.simple_list_item_1, lstSource);
-                lstView.setAdapter(adapter);
+                //ArrayAdapter adapter = new ArrayAdapter(IngredientSearch.this, android.R.layout.simple_list_item_1, lstSource);
+                //lstView.setAdapter(adapter);
 
             }
         });
@@ -77,18 +77,18 @@ public class IngredientSearch extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 if (newText != null && !newText.isEmpty()) {
                     List<String> lstFound = new ArrayList<String>();
-                    for (String item : lstSource) {
-                        if (item.contains(newText))
-                            lstFound.add(item);
-                    }
+                    //for (String item : lstSource) {
+                    //    if (item.contains(newText))
+                    //        lstFound.add(item);
+                    //}
 
                     ArrayAdapter adapter = new ArrayAdapter(IngredientSearch.this, android.R.layout.simple_list_item_1, lstFound);
                     lstView.setAdapter(adapter);
                 } else {
                     //if search text is null
                     //return default
-                    ArrayAdapter adapter = new ArrayAdapter(IngredientSearch.this, android.R.layout.simple_list_item_1, lstSource);
-                    lstView.setAdapter(adapter);
+                    //ArrayAdapter adapter = new ArrayAdapter(IngredientSearch.this, android.R.layout.simple_list_item_1, lstSource);
+                    //lstView.setAdapter(adapter);
                 }
                 return true;
             }

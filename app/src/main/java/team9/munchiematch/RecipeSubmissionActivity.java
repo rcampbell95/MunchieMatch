@@ -16,14 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import static android.text.InputType.TYPE_CLASS_NUMBER;
+
 //import munchiematch.munchiematch.R;
 
 public class RecipeSubmissionActivity extends AppCompatActivity {
     private Spinner mealTypeDropDown;
+    private Spinner ingredientUnits;
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    private Button addIngredient;
-    private Button addRecipeStep;
-    private Button addPicture;
+
     private LinearLayout ingredientList;
     private LinearLayout stepList;
 
@@ -37,14 +38,15 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         mealTypeDropDown = (Spinner) this.findViewById(R.id.mealTypeChoices);
         mealTypeDropDown.setAdapter(new ArrayAdapter<MealType>(this, android.R.layout.simple_spinner_item, MealType.values()));
 
+        ingredientUnits = (Spinner) this.findViewById(R.id.quantityUnits);
+        ingredientUnits.setAdapter(new ArrayAdapter<Ingredient_Measurement>(this,
+                android.R.layout.simple_spinner_item, Ingredient_Measurement.values()));
+
+
         // Specify the layout to use when the list of choices appears
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         //mealTypeDropDown.setAdapter(adapter);
-
-        addIngredient = (Button) this.findViewById(R.id.addIngredientButton);
-        addRecipeStep = (Button) this.findViewById(R.id.addStepButton);
-        addPicture = (Button) this.findViewById(R.id.pictureUpload);
 
         ingredientList = (LinearLayout) this.findViewById(R.id.recipeIngredientLayout);
         stepList = (LinearLayout) this.findViewById(R.id.recipeStepLayout);
@@ -82,6 +84,8 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
     //TODO -- implement addIngredient and addStep functions
     //TODO -- make new TextView and EditView children of corresponding LinearLayout
     public void addIngredient(View view) {
+
+
         TextView ingredientText = new TextView(this);
         ingredientText.setText("Ingredient");
         ingredientList.addView(ingredientText);
@@ -93,8 +97,20 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         quantityText.setText("Quantity");
         ingredientList.addView(quantityText);
 
-        EditText quantity = new EditText(this);
-        ingredientList.addView(quantity);
+        LinearLayout quantityField = new LinearLayout(this, null, R.style.newRecipeItem);
+
+        EditText quantityNumber = new EditText(this);
+        quantityNumber.setInputType(TYPE_CLASS_NUMBER);
+        quantityField.addView(quantityNumber);
+
+        Spinner quantityUnits = new Spinner(this);
+
+        quantityUnits.setAdapter(new ArrayAdapter<Ingredient_Measurement>(this,
+                android.R.layout.simple_spinner_item, Ingredient_Measurement.values()));
+
+        quantityField.addView(quantityUnits);
+
+        ingredientList.addView(quantityField);
     }
 
     public void addStep(View view) {
