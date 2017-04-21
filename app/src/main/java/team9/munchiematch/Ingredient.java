@@ -6,7 +6,7 @@ package team9.munchiematch;
 enum Ingredient_Type {
     spice, meat, dairy, fruit, vegetable, nut, bread
 };
-enum Ingredient_Measurement {cup, tablespoon, teaspoon, pinch, bowl, lbs, grams, leaf, part, liters, galons, slices,
+enum Ingredient_Measurement {cup, tablespoon, teaspoon, pinch, bowl, lbs, grams, leaf, part, liters, gallons, slices,
 
 };
 
