@@ -2,8 +2,10 @@ package team9.munchiematch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,10 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import static android.app.Activity.RESULT_OK;
+import static team9.munchiematch.RecipeSubmissionActivity.REQUEST_IMAGE_CAPTURE;
 
 
 /**
@@ -25,7 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
  * Use the {@link UserProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserProfileFragment extends Fragment {
+public class UserProfileFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,6 +42,8 @@ public class UserProfileFragment extends Fragment {
     private Button addRecipeButton;
 
     public static User currentUser;
+
+    private ImageButton profilePicture;
 
     // TODO: Rename and change types of parameters
     private static String header;
@@ -110,6 +118,9 @@ public class UserProfileFragment extends Fragment {
 
         addRecipeButton = (Button) rootView.findViewById(R.id.recipeAddButton);
 
+        profilePicture = (ImageButton) rootView.findViewById(R.id.profilePicture);
+        profilePicture.setOnClickListener(this);
+
         return rootView;
     }
 
@@ -142,6 +153,34 @@ public class UserProfileFragment extends Fragment {
         super.onStop();
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            profilePicture.setImageBitmap(imageBitmap);
+
+            //TODO -- set imageBitmap equal to bitmap in recipe or change instance variable
+            // in recipe class
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.profilePicture:
+                dispatchTakePictureIntent();
+                break;
         }
     }
 
