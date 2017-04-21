@@ -5,4 +5,11 @@ package team9.munchiematch;
  */
 
 public class RecipeBuilder {
+    public RecipeBuilder() {
+        ;
+    }
+
+    //public Recipe createRecipe() {
+    //    ;
+    //}
 }
