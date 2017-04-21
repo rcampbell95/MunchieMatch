@@ -102,8 +102,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
         if(view == tvSignUp){
+            //"When register clicks "Don't have an account? Signup Here" -> RegisterActivity
             finish();
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, RegisterActivity.class));
         }
     }
 }

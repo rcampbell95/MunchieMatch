@@ -14,7 +14,7 @@
         <uses-feature android:name="android.hardware.camera"
             android:required="false" />
 
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".LoginActivity">
             //Copy and Paste intent filter to run
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".IngredientSearch" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".NavigationActivity" />
         <activity android:name=".TimerActivity" />
         <activity android:name=".MainActivity" />

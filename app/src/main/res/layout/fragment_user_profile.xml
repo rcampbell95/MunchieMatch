@@ -56,7 +56,8 @@
         android:text="logout"
         android:id="@+id/buttonLogout"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="LogoutUser"/>
 
     <TextView
         android:id="@+id/textViewUserEmail"

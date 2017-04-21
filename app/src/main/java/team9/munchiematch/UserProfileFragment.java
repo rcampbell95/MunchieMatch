@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,7 +31,9 @@ import static team9.munchiematch.RecipeSubmissionActivity.REQUEST_IMAGE_CAPTURE;
  * Use the {@link UserProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class UserProfileFragment extends Fragment implements View.OnClickListener {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,11 +41,15 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
     private static final String TAG = "User Profile";
     private TextView userNameField;
+
     private Button addRecipeButton;
 
     public static User currentUser;
 
     private ImageButton profilePicture;
+
+    private TextView textViewUserEmail;
+    private Button buttonLogout;
 
     // TODO: Rename and change types of parameters
     private static String header;
@@ -92,7 +98,11 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+
+
+
+
+       if (getArguments() != null) {
             header = getArguments().getString(ARG_PARAM1);
         }
 
@@ -105,8 +115,18 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
         mAuth = mAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
 
+
         User currentUser = User.getInstance(mAuth.getCurrentUser());
         userNameField.setText(currentUser.getUserName());
+
+//        if(mAuth.getCurrentUser() == null) {
+//            finish();
+//            startActivity(new Intent(this, LoginActivity.class));
+//        }
+
+        userNameField.setText(currentUser.getUserName());
+
+        buttonLogout.setOnClickListener(this);
     }
 
     @Override
@@ -120,6 +140,9 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
         profilePicture = (ImageButton) rootView.findViewById(R.id.profilePicture);
         profilePicture.setOnClickListener(this);
+
+        textViewUserEmail = (TextView) rootView.findViewById(R.id.textViewUserEmail);
+        buttonLogout = (Button) rootView.findViewById(R.id.buttonLogout);
 
         return rootView;
     }
@@ -194,7 +217,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
