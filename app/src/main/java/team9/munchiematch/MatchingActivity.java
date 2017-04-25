@@ -39,13 +39,13 @@ public class MatchingActivity extends AppCompatActivity {
         recipeList.add(new LocalRecipeObject(R.drawable.bacon_guacamolegrilled_cheese_sandwich, "Bacon Sandwich"));
         recipeList.add(new LocalRecipeObject(R.drawable.berry_ice_lemonade, "Berry Ice Lemonade"));
         recipeList.add(new LocalRecipeObject(R.drawable.choco_chip_oreo_cookies, "Oreo Cookies"));
-        //recipeList.add(new LocalRecipeObject(R.drawable.fettuccine_alfredo, "Fettuccine Alfredo"));
-        //recipeList.add(new LocalRecipeObject(R.drawable.herb_parmesan_french_fries, "Herb French Fries"));
-        //recipeList.add(new LocalRecipeObject(R.drawable.mango_chicken_tenders, "Mango Chicken Tenders"));
-        //recipeList.add(new LocalRecipeObject(R.drawable.mini_deep_dish_pizza, "Mini Deep Dish Pizza"));
-        //recipeList.add(new LocalRecipeObject(R.drawable.portobello_pesto_pizza, "Portebello Pesto Pizza"));
-        //recipeList.add(new LocalRecipeObject(R.drawable.spinich_tempeh_dumplings, "Spinach Tempeh Dumplings"));
-        //recipeList.add(new LocalRecipeObject(R.drawable.sweet_n_sour_chicken, "Sweet N Sour Chicken"));
+        recipeList.add(new LocalRecipeObject(R.drawable.fettuccine_alfredo, "Fettuccine Alfredo"));
+        recipeList.add(new LocalRecipeObject(R.drawable.herb_parmesan_french_fries, "Herb French Fries"));
+        recipeList.add(new LocalRecipeObject(R.drawable.mango_chicken_tenders, "Mango Chicken Tenders"));
+        recipeList.add(new LocalRecipeObject(R.drawable.mini_deep_dish_pizza, "Mini Deep Dish Pizza"));
+        recipeList.add(new LocalRecipeObject(R.drawable.portobello_pesto_pizza, "Portebello Pesto Pizza"));
+        recipeList.add(new LocalRecipeObject(R.drawable.spinich_tempeh_dumplings, "Spinach Tempeh Dumplings"));
+        recipeList.add(new LocalRecipeObject(R.drawable.sweet_n_sour_chicken, "Sweet N Sour Chicken"));
         Collections.shuffle(recipeList); // Initially shuffle the recipe list...
         //display current initial index
         recipeTitle.setText(recipeList.get(index).recipeTitle);
@@ -76,8 +76,6 @@ public class MatchingActivity extends AppCompatActivity {
         delayedStatus(500, "Disliked", "#FF0000");
         loadNextRecipe();
     }
-
-    //Ideally contains picture/title/recipe
     //Displays current recipe in index
     public void loadNextRecipe(){
         if (recipeList.isEmpty()){ //check if empty
@@ -86,6 +84,8 @@ public class MatchingActivity extends AppCompatActivity {
         }
         else{
             if (dislikedPressed){
+                recipeList.get(index).setDisliked();
+                recipeList.get(index).setSeen();
                 dislikedPressed = false;
                 recipeList.remove(index); // delete object from arraylist if disliked...
                 if (index > recipeList.size() - 1) { //holy crap if the last object is deleted decrement DUH
@@ -102,6 +102,8 @@ public class MatchingActivity extends AppCompatActivity {
                 }
             }
             else{ //likedIsPressed
+                recipeList.get(index).setLiked();
+                recipeList.get(index).setSeen();
                 index++; //
                 if (index > recipeList.size() - 1) { //check if index is greater than list... if it is reset
                     Collections.shuffle(recipeList);

@@ -7,6 +7,7 @@ package team9.munchiematch;
 public class LocalRecipeObject {
     int recipeImageID;
     boolean likedDisliked;
+    boolean seen = false;
     String recipeTitle;
 
     public LocalRecipeObject(int location, String title){
@@ -19,4 +20,5 @@ public class LocalRecipeObject {
     public void setLiked(){
         likedDisliked = true;
     }
+    public void setSeen() { seen = true; }
 }
