@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 
@@ -130,7 +133,20 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
     }
 
 
+
     public void takePicture(View view) {
         dispatchTakePictureIntent();
+    }
+
+    public void submitRecipe(View view) {
+        RecipeBuilder builder = new RecipeBuilder();
+        ArrayList<View> elements;
+        elements = builder.findElements(ingredientList);
+
+        for(int i = 0;i < elements.size();i++) {
+            Log.d("RSA", elements.get(i).toString());
+        }
+
+        Log.e("RSA", Integer.toString(elements.size()));
     }
 }

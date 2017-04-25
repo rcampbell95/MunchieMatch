@@ -13,10 +13,12 @@ enum Ingredient_Measurement {cup, tablespoon, teaspoon, pinch, bowl, lbs, grams,
 public class Ingredient {
     private Ingredient_Type type;
     private String name;
+    private double quantity;
     private Ingredient_Measurement measurement;
-    public Ingredient(Ingredient_Type type, String name, Ingredient_Measurement measurement) {
+    public Ingredient(Ingredient_Type type, String name, Ingredient_Measurement measurement, double quantity) {
         this.type = type;
         this.name = name;
+        this.quantity = quantity;
 
     }
 
@@ -35,6 +37,14 @@ public class Ingredient {
 
     public void setMeasurement(Ingredient_Measurement measurement) {
         this.measurement = measurement;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getQuantity() {
+        return quantity;
     }
 
     public String getName() {

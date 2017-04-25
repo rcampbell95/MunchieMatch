@@ -11,7 +11,7 @@ import java.util.Comparator;
 
 public class Recipe {
     private String title;
-    private ArrayList<Pair<String, Ingredient>> recipeIngredients;
+    private ArrayList<Ingredient> recipeIngredients;
     private ArrayList<Pair<String, String>> recipeSteps;
     private MealType recipeMealType;
     private Privacy recipeVisibility = Privacy.PRIVATE;
@@ -30,17 +30,22 @@ public class Recipe {
         title = newTitle;
     }
 
+    public void setPicture(Bitmap newPicture) {
+        picture = newPicture;
+    }
+
     public Bitmap getPicture() {
         return picture;
     }
 
-    public void setIngredients(ArrayList<Pair<String, Ingredient>> userSubmittedIngredients) {
+    public void setIngredients(ArrayList<Ingredient> userSubmittedIngredients) {
         recipeIngredients = userSubmittedIngredients;
     }
 
+    //TODO -- refactor this method
     public boolean findIngredient(Ingredient searchIngredient, Comparator<Recipe> compareScheme) {
-        for(Pair<String, Ingredient> ingredientLine : recipeIngredients) {
-            if(ingredientLine.getSecond() == searchIngredient) {
+        for(Ingredient ingredientLine : recipeIngredients) {
+            if(ingredientLine == searchIngredient) {
                 return true;
             }
         }
@@ -91,13 +96,6 @@ public class Recipe {
     Private class that represents an ingredient
     in the user submitted recipe
      */
-    private class Ingredient {
-        ///TODO-- Remove Placeholder
-    }
-
-    private class MealType {
-        //TODO-- Remove Placeholder
-    }
 
     private enum Privacy {PUBLIC, PRIVATE}
 }
