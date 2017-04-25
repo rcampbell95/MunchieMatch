@@ -35,18 +35,21 @@ public class MatchingActivity extends AppCompatActivity {
         recipeImage = (ImageView) this.findViewById(R.id.recipeImage);
         likeDislikeStatus = (TextView) this.findViewById(R.id.likeDislikeStatus);
         likeDislikeStatus.setText("");
+
         recipeList.add(new LocalRecipeObject(R.drawable.bacon_guacamolegrilled_cheese_sandwich, "Bacon Sandwich"));
         recipeList.add(new LocalRecipeObject(R.drawable.berry_ice_lemonade, "Berry Ice Lemonade"));
         recipeList.add(new LocalRecipeObject(R.drawable.choco_chip_oreo_cookies, "Oreo Cookies"));
-        recipeList.add(new LocalRecipeObject(R.drawable.fettuccine_alfredo, "Fettuccine Alfredo"));
-        recipeList.add(new LocalRecipeObject(R.drawable.herb_parmesan_french_fries, "Herb French Fries"));
-        recipeList.add(new LocalRecipeObject(R.drawable.mango_chicken_tenders, "Mango Chicken Tenders"));
-        recipeList.add(new LocalRecipeObject(R.drawable.mini_deep_dish_pizza, "Mini Deep Dish Pizza"));
-        recipeList.add(new LocalRecipeObject(R.drawable.portobello_pesto_pizza, "Portebello Pesto Pizza"));
-        recipeList.add(new LocalRecipeObject(R.drawable.spinich_tempeh_dumplings, "Spinach Tempeh Dumplings"));
-        recipeList.add(new LocalRecipeObject(R.drawable.sweet_n_sour_chicken, "Sweet N Sour Chicken"));
+        //recipeList.add(new LocalRecipeObject(R.drawable.fettuccine_alfredo, "Fettuccine Alfredo"));
+        //recipeList.add(new LocalRecipeObject(R.drawable.herb_parmesan_french_fries, "Herb French Fries"));
+        //recipeList.add(new LocalRecipeObject(R.drawable.mango_chicken_tenders, "Mango Chicken Tenders"));
+        //recipeList.add(new LocalRecipeObject(R.drawable.mini_deep_dish_pizza, "Mini Deep Dish Pizza"));
+        //recipeList.add(new LocalRecipeObject(R.drawable.portobello_pesto_pizza, "Portebello Pesto Pizza"));
+        //recipeList.add(new LocalRecipeObject(R.drawable.spinich_tempeh_dumplings, "Spinach Tempeh Dumplings"));
+        //recipeList.add(new LocalRecipeObject(R.drawable.sweet_n_sour_chicken, "Sweet N Sour Chicken"));
         Collections.shuffle(recipeList); // Initially shuffle the recipe list...
-        loadNextRecipe(); // load initial recipe
+        //display current initial index
+        recipeTitle.setText(recipeList.get(index).recipeTitle);
+        recipeImage.setImageResource(recipeList.get(index).recipeImageID);
     }
 
     public void goToSettings(View view) {
@@ -75,41 +78,43 @@ public class MatchingActivity extends AppCompatActivity {
     }
 
     //Ideally contains picture/title/recipe
-    //There has to be some methods to navigate the database and retrieve items from them
+    //Displays current recipe in index
     public void loadNextRecipe(){
-        recipeTitle.postDelayed(new Runnable() {
-            @Override
-            public void run () {
-                if (recipeList.isEmpty()) {
+        if (recipeList.isEmpty()){ //check if empty
+            recipeTitle.setText("No more items left...");
+            recipeImage.setImageResource(android.R.color.transparent);
+        }
+        else{
+            if (dislikedPressed){
+                dislikedPressed = false;
+                recipeList.remove(index); // delete object from arraylist if disliked...
+                if (index > recipeList.size() - 1) { //holy crap if the last object is deleted decrement DUH
+                    index--;
+                }
+                //recipeList.trimToSize(); // shrink array list
+                if (recipeList.isEmpty()){ //check if empty after removing
                     recipeTitle.setText("No more items left...");
                     recipeImage.setImageResource(android.R.color.transparent);
                 }
                 else {
-                    if (dislikedPressed == true){
-                        recipeList.remove(index); // delete object from arraylist if disliked...
-                        recipeList.trimToSize(); // shrink array list
-                        dislikedPressed = false;
-                        // then display next object
-                        recipeTitle.setText(recipeList.get(index).recipeTitle);
-                        recipeImage.setImageResource(recipeList.get(index).recipeImageID);
-                        if (index < 0 || index >= recipeList.size()) { //case where iterator is greater than index last element
-                            Collections.shuffle(recipeList);
-                            index = 0;
-                        }
-                    }
-                    else{
-                        recipeTitle.setText(recipeList.get(index).recipeTitle);
-                        recipeImage.setImageResource(recipeList.get(index).recipeImageID);
-                        index++;
-                        if (index < 0 || index >= recipeList.size()) {
-                            Collections.shuffle(recipeList);
-                            index = 0;
-                        }
-
-                    }
+                    recipeTitle.setText(recipeList.get(index).recipeTitle);
+                    recipeImage.setImageResource(recipeList.get(index).recipeImageID);
                 }
             }
-        }, 500); // sets delay before updating picture and text
+            else{ //likedIsPressed
+                index++; //
+                if (index > recipeList.size() - 1) { //check if index is greater than list... if it is reset
+                    Collections.shuffle(recipeList);
+                    index = 0;
+                    recipeTitle.setText(recipeList.get(index).recipeTitle);
+                    recipeImage.setImageResource(recipeList.get(index).recipeImageID);
+                }
+                else {
+                    recipeTitle.setText(recipeList.get(index).recipeTitle);
+                    recipeImage.setImageResource(recipeList.get(index).recipeImageID);
+                }
+            }
+        }
     }
 
     public void delayedStatus (int seconds, final String status, final String color){
