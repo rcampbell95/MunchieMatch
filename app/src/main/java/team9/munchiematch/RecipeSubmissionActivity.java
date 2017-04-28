@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,11 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static android.text.InputType.TYPE_CLASS_NUMBER;
-
-//import munchiematch.munchiematch.R;
 
 public class RecipeSubmissionActivity extends AppCompatActivity {
     private Spinner mealTypeDropDown;
@@ -30,6 +32,8 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
 
     private LinearLayout ingredientList;
     private LinearLayout stepList;
+
+    RecipeBuilder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,8 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         ingredientUnits = (Spinner) this.findViewById(R.id.quantityUnits);
         ingredientUnits.setAdapter(new ArrayAdapter<Ingredient_Measurement>(this,
                 android.R.layout.simple_spinner_item, Ingredient_Measurement.values()));
+
+        builder = new RecipeBuilder();
 
 
         // Specify the layout to use when the list of choices appears
@@ -77,11 +83,12 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //mImageView.setImageBitmap(imageBitmap);
-
-            //TODO -- set imageBitmap equal to bitmap in recipe or change instance variable
-            // in recipe class
+            builder.setPicture(imageBitmap);
         }
+    }
+
+    public void takePicture(View view) {
+        dispatchTakePictureIntent();
     }
 
     /**
@@ -149,14 +156,36 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         stepList.addView(stepTime);
     }
 
-
-
-    public void takePicture(View view) {
-        dispatchTakePictureIntent();
-    }
-
     public void submitRecipe(View view) {
-        RecipeBuilder builder = new RecipeBuilder();
+        EditText title = (EditText)findViewById(R.id.recipeTitle);
+
+        builder.setTitle(title.getText().toString());
         builder.setIngredients(ingredientList);
+        builder.setSteps(stepList);
+
+
+        builder.setMealType(findViewById(R.id.mealTypeChoices));
+        builder.setPrivacy(findViewById(R.id.privacyToggle));
+        Recipe recipe = builder.createRecipe();
+
+        Log.e("Submit", recipe.getTitle());
+        for(Iterator<Ingredient> i = recipe.getIngredients().iterator();i.hasNext();) {
+            Ingredient current = i.next();
+            Log.e("Submit", current.getName());
+            Log.e("Submit", Double.toString(current.getQuantity()));
+            Log.e("Submit", current.getMeasurement().toString());
+        }
+
+        int count = 0;
+        for(Iterator<Pair<String, String>> i = recipe.getSteps().iterator();i.hasNext();) {
+            Pair<String, String> recipeStep = i.next();
+            Log.e("Submit", recipeStep.first);
+            Log.e("Submit", recipeStep.second);
+            Log.e("Submit", Integer.toString(count++));
+        }
+
+
+        User user = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
+        user.addRecipe(builder.createRecipe());
     }
 }
