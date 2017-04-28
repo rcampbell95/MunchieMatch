@@ -2,8 +2,10 @@ package team9.munchiematch;
 
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -16,9 +18,9 @@ import java.util.Iterator;
  */
 
 public class RecipeBuilder {
-    ArrayList<View> ingredientElements;
-    ArrayList<View> stepElements;
-    Recipe recipe;
+    private ArrayList<View> ingredientElements;
+    private ArrayList<View> stepElements;
+    private Recipe recipe;
 
     public RecipeBuilder() {
         recipe = new Recipe();
@@ -38,7 +40,7 @@ public class RecipeBuilder {
         ingredientElements = findElements(view);
         ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
 
-        Ingredient_Measurement unit = null;
+        Ingredient_Measurement unit = Ingredient_Measurement.slices;
         String ingredient = new String();
         double ingredientQuantity = 0;
 
@@ -63,6 +65,9 @@ public class RecipeBuilder {
             else if(viewId == R.id.quantityUnits) {
                 Object selectedItem = ((Spinner)currentView).getSelectedItem();
                 unit = (Ingredient_Measurement) selectedItem;
+                // TODO -- debug this method
+                // Why does the measurement return a null value?
+                // OR is the entire Ingredient object null?
             }
 
             if(currentView instanceof LinearLayout) {
@@ -71,7 +76,6 @@ public class RecipeBuilder {
                 ingredientList.add(newIngredient);
             }
         }
-
         recipe.setIngredients(ingredientList);
     }
 
@@ -81,15 +85,49 @@ public class RecipeBuilder {
      * @param view
      */
     public void setSteps(View view) {
+        ArrayList<Pair<String, String>> stepList = new ArrayList<Pair<String, String>>();
+
         stepElements = findElements(view);
+
+        int viewCount = 0;
+        String stepDescription = new String();
+        String stepTime = new String();
+        for(Iterator<View> i = stepElements.iterator();i.hasNext();) {
+            View currentView = i.next();
+            int viewId = currentView.getId();
+            viewCount += 1;
+
+            String recipeDescription;
+            if(viewId == R.id.recipeDescription) {
+                stepDescription = ((EditText) currentView).getText().toString();
+            }
+            else if(viewId == R.id.stepTime) {
+                stepTime = ((EditText) currentView).getText().toString();
+            }
+            if(viewCount == 4) {
+                Pair<String, String> newStep = new Pair<String, String>(stepDescription, stepTime);
+                stepList.add(newStep);
+                viewCount = 0;
+            }
+        }
+
+        recipe.setRecipeSteps(stepList);
     }
 
-    public void setMealType(MealType recipeMealType) {
-        recipe.setRecipeMealType(recipeMealType);
+    public void setMealType(View spinner) {
+        Object selectedItem = ((Spinner)spinner).getSelectedItem();
+        MealType mealType = (MealType) selectedItem;
+        recipe.setRecipeMealType(mealType);
     }
 
-    public void setPrivacy() {
-        ;
+    public void setPrivacy(View checkBox) {
+        boolean isChecked = ((CheckBox)checkBox).isChecked();
+        if(isChecked) {
+            recipe.setPublic();
+        }
+        else {
+            recipe.setPrivate();
+        }
     }
 
     public void setPicture(Bitmap picture) {
