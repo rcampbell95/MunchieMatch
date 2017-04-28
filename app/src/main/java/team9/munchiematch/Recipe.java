@@ -1,6 +1,7 @@
 package team9.munchiematch;
 
 import android.graphics.Bitmap;
+import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,8 +19,6 @@ public class Recipe {
     private Bitmap picture;
 
     public Recipe() {
-        ;
-        ///TODO-- Add constuctor?
     }
 
     public String getTitle() {
@@ -40,6 +39,22 @@ public class Recipe {
 
     public void setIngredients(ArrayList<Ingredient> userSubmittedIngredients) {
         recipeIngredients = userSubmittedIngredients;
+    }
+
+    public ArrayList<Ingredient> getIngredients() {
+        return recipeIngredients;
+    }
+
+    public void setRecipeSteps(ArrayList<Pair<String, String>> userSubmittedSteps) {
+        recipeSteps = userSubmittedSteps;
+    }
+
+    public ArrayList<Pair<String, String>> getSteps() {
+        return recipeSteps;
+    }
+
+    public ArrayList<Pair<String, String>> getRecipeSteps() {
+        return recipeSteps;
     }
 
     //TODO -- refactor this method
@@ -68,29 +83,6 @@ public class Recipe {
         recipeVisibility = Privacy.PUBLIC;
     }
 
-    /*
-    Private class that implements
-    a tuple data structure
-    using generics
-     */
-
-    public class Pair<K, E> {
-        K first;
-        E second;
-
-        public Pair(K newFirst, E newSecond){
-            first = newFirst;
-            second = newSecond;
-        }
-
-        public K getFirst() {
-            return first;
-        }
-
-        public E getSecond() {
-            return second;
-        }
-    }
 
     /*
     Private class that represents an ingredient
