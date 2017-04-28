@@ -84,51 +84,68 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         }
     }
 
-    //TODO -- implement addIngredient and addStep functions
-    //TODO -- make new TextView and EditView children of corresponding LinearLayout
+    /**
+     * Dynamically creates the UI elements to add
+     * another ingredient when the "Add Ingredient" button
+     * is pressed
+     * @param view
+     */
     public void addIngredient(View view) {
-
-
         TextView ingredientText = new TextView(this);
         ingredientText.setText("Ingredient");
+        ingredientText.setId(R.id.ingredientText);
         ingredientList.addView(ingredientText);
 
         EditText ingredient = new EditText(this);
+        ingredient.setId(R.id.ingredientChoice);
         ingredientList.addView(ingredient);
 
         TextView quantityText = new TextView(this);
         quantityText.setText("Quantity");
+        quantityText.setId(R.id.quantityText);
         ingredientList.addView(quantityText);
 
         LinearLayout quantityField = new LinearLayout(this, null, R.style.newRecipeItem);
 
         EditText quantityNumber = new EditText(this);
         quantityNumber.setInputType(TYPE_CLASS_NUMBER);
+        quantityNumber.setId(R.id.quantityNumber);
         quantityField.addView(quantityNumber);
 
         Spinner quantityUnits = new Spinner(this);
 
         quantityUnits.setAdapter(new ArrayAdapter<Ingredient_Measurement>(this,
                 android.R.layout.simple_spinner_item, Ingredient_Measurement.values()));
+        quantityUnits.setId(R.id.quantityUnits);
 
         quantityField.addView(quantityUnits);
 
         ingredientList.addView(quantityField);
     }
 
+    /**
+     * Dynamically creates the UI elements to
+     * add a step to the recipe when the
+     * "Add Step" button is pressed
+     * @param view
+     */
     public void addStep(View view) {
         TextView descriptionText = new TextView(this);
         descriptionText.setText("Step Description");
+        descriptionText.setId(R.id.descriptionText);
         stepList.addView(descriptionText);
 
         EditText description = new EditText(this);
+        description.setId(R.id.recipeDescription);
         stepList.addView(description);
 
         TextView timeText = new TextView(this);
         timeText.setText("Time Needed");
+        timeText.setId(R.id.timeText);
         stepList.addView(timeText);
 
         EditText stepTime = new EditText(this);
+        stepTime.setId(R.id.stepTime);
         stepList.addView(stepTime);
     }
 
@@ -140,13 +157,6 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
 
     public void submitRecipe(View view) {
         RecipeBuilder builder = new RecipeBuilder();
-        ArrayList<View> elements;
-        elements = builder.findElements(ingredientList);
-
-        for(int i = 0;i < elements.size();i++) {
-            Log.d("RSA", elements.get(i).toString());
-        }
-
-        Log.e("RSA", Integer.toString(elements.size()));
+        builder.setIngredients(ingredientList);
     }
 }

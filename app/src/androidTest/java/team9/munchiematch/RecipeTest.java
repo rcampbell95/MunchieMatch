@@ -5,6 +5,8 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static junit.framework.Assert.assertEquals;
+
 /**
  * Created by rober on 3/20/2017.
  */
@@ -13,11 +15,13 @@ import org.junit.runner.RunWith;
 public class RecipeTest {
     @Test
     public void testSetTitle() {
-        String testTitle = "Mashed Potatoes";
-        Recipe testRecipe = new Recipe();
-        testRecipe.setTitle(testTitle);
+        String[] data = {"Grilled Cheese", "Pot Pie", "Muffins", "Chocolate", "Eel", ""};
+        for(int i = 0;i < data.length;i++) {
+            Recipe test = new Recipe();
+            test.setTitle(data[i]);
 
-        assert(!testTitle.equals(testRecipe.getTitle()));
+            assertEquals(test.getTitle(), data[i]);
+        }
 
     }
 
