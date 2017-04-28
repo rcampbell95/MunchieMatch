@@ -18,8 +18,8 @@ public class Ingredient {
     public Ingredient(Ingredient_Type type, String name, Ingredient_Measurement measurement, double quantity) {
         this.type = type;
         this.name = name;
+        this.measurement = measurement;
         this.quantity = quantity;
-
     }
 
     public Ingredient_Type getType() {
