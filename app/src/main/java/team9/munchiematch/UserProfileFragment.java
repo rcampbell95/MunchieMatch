@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import static android.app.Activity.RESULT_OK;
-import static team9.munchiematch.RecipeSubmissionActivity.REQUEST_IMAGE_CAPTURE;
+
 
 
 /**
@@ -33,6 +33,8 @@ import static team9.munchiematch.RecipeSubmissionActivity.REQUEST_IMAGE_CAPTURE;
  */
 
 public class UserProfileFragment extends Fragment implements View.OnClickListener {
+
+    public final int REQUEST_IMAGE_CAPTURE = 1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
