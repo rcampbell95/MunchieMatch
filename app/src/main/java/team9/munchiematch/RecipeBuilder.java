@@ -130,8 +130,12 @@ public class RecipeBuilder {
         }
     }
 
-    public void setPicture(Bitmap picture) {
-        recipe.setPicture(picture);
+    public void setIcon(Bitmap newIcon) {
+        recipe.setIcon(newIcon);
+    }
+
+    public void setPicture(String picturePath) {
+        recipe.setPicturePath(picturePath);
     }
 
     public Recipe createRecipe() {

@@ -91,6 +91,7 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
 
         // Save a file: path for use with ACTION_VIEW intents
         String mCurrentPhotoPath = image.getAbsolutePath();
+        builder.setPicture(mCurrentPhotoPath);
         return image;
     }
 
@@ -121,7 +122,7 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            builder.setPicture(imageBitmap);
+            builder.setIcon(imageBitmap);
         }
     }
 

@@ -16,7 +16,8 @@ public class Recipe {
     private ArrayList<Pair<String, String>> recipeSteps;
     private MealType recipeMealType;
     private Privacy recipeVisibility = Privacy.PRIVATE;
-    private Bitmap picture;
+    private Bitmap icon;
+    private String picturePath;
 
     public Recipe() {
     }
@@ -29,12 +30,20 @@ public class Recipe {
         title = newTitle;
     }
 
-    public void setPicture(Bitmap newPicture) {
-        picture = newPicture;
+    public void setIcon(Bitmap newIcon) {
+        icon = newIcon;
     }
 
-    public Bitmap getPicture() {
-        return picture;
+    public Bitmap getIcon() {
+        return icon;
+    }
+
+    public void setPicturePath(String newPicturePath) {
+        picturePath = newPicturePath;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
     }
 
     public void setIngredients(ArrayList<Ingredient> userSubmittedIngredients) {
