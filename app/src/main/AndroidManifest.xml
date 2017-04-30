@@ -21,7 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IngredientSearch" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".NavigationActivity" />
         <activity android:name=".TimerActivity"/>

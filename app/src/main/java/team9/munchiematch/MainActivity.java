@@ -25,6 +25,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeActivity(View view) {
-        Intent intent = new Intent(this, IngredientSearch.class);
+        Intent intent = new Intent(this, MatchingActivity.class);
     }
 }
