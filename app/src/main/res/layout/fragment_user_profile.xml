@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="team9.munchiematch.UserProfileFragment">
+
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        app:srcCompat="@drawable/default_profile"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/profilePicture"
+        android:layout_alignEnd="@+id/matchesButton" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="Settings" />
+
+    <Button
+        android:id="@+id/matchesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="Matches" />
+
+    <Button
+        android:id="@+id/recipeAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Add Recipe"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logout"
+        android:id="@+id/buttonLogout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="LogoutUser"/>
+
+    <TextView
+        android:id="@+id/textViewUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:layout_below="@+id/userName"
+        android:layout_alignStart="@+id/userName" />
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+
+
+
+</RelativeLayout>
