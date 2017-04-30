@@ -14,10 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Iterator;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -52,6 +56,8 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
     private TextView textViewUserEmail;
     private Button buttonLogout;
+
+    private LinearLayout recipeContainer;
 
     // TODO: Rename and change types of parameters
     private static String header;
@@ -101,10 +107,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-
-       if (getArguments() != null) {
+        if (getArguments() != null) {
             header = getArguments().getString(ARG_PARAM1);
         }
 
@@ -126,9 +129,15 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 //            startActivity(new Intent(this, LoginActivity.class));
 //        }
 
-        userNameField.setText(currentUser.getUserName());
-
         buttonLogout.setOnClickListener(this);
+
+
+        for(Iterator<Recipe> i = currentUser.getRecipes().iterator();i.hasNext();) {
+            Recipe currentRecipe = i.next();
+            RecipeView recipeView = new RecipeView(getContext(), currentRecipe.getTitle(), currentRecipe.getPicturePath());
+            //recipeContainer.addView(recipeView);
+            Log.e("User", recipeView.toString());
+        }
     }
 
     @Override
@@ -142,7 +151,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
         profilePicture = (ImageButton) rootView.findViewById(R.id.profilePicture);
         profilePicture.setOnClickListener(this);
-
+        recipeContainer = (LinearLayout) rootView.findViewById(R.id.userRecipes);
         textViewUserEmail = (TextView) rootView.findViewById(R.id.textViewUserEmail);
         buttonLogout = (Button) rootView.findViewById(R.id.buttonLogout);
 
