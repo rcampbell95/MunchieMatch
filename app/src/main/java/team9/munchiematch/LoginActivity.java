@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("Logging In...");
         progressDialog.show(); // Show the message dialog
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -102,9 +102,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
         if(view == tvSignUp){
-            //"When register clicks "Don't have an account? Signup Here" -> RegisterActivity
+            //"When user clicks "Don't have an account? Signup Here" -> RegisterActivity
             finish();
-            startActivity(new Intent(this, RegisterActivity.class));
-        }
+            //startActivity(new Intent(this, RegisterActivity.class));
+
+            Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(registerIntent);
+
+    }
     }
 }

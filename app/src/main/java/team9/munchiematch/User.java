@@ -11,6 +11,10 @@ import java.util.ArrayList;
  * Created by robert on 3/18/2017.
  */
 
+/**
+ * Need to Implement Liked Recipes from Matching Activity on 4/25/17
+ */
+
 public class User {
     private ArrayList<Recipe> userRecipes;
     private ArrayList<Recipe> likedRecipes;
