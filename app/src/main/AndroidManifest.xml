@@ -15,7 +15,10 @@
 
         <activity android:name=".LoginActivity">
             //Copy and Paste intent filter inside the activity brackets to run the activity first
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".RegisterActivity">
@@ -31,10 +34,7 @@
         </activity>
 
         <activity android:name=".MatchingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
     </application>
