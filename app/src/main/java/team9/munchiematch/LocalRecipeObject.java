@@ -20,5 +20,13 @@ public class LocalRecipeObject {
     public void setLiked(){
         likedDisliked = true;
     }
-    public void setSeen() { seen = true; }
+    public void setSeen() {
+        seen = true;
+    }
+    public boolean readSeenStatus(){
+        return seen;
+    }
+    public boolean readLikedStatus(){
+        return likedDisliked;
+    }
 }
