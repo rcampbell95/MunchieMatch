@@ -119,11 +119,18 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            builder.setIcon(imageBitmap);
-        }
+//        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+//            Bundle extras = data.getExtras();
+//            Bitmap imageBitmap;
+//            try {
+//                imageBitmap = (Bitmap) extras.get("data");
+//            }
+//            catch (NullPointerException e) {
+//                e.printStackTrace();
+//                imageBitmap = null;
+//            }
+//            builder.setIcon(imageBitmap);
+//        }
     }
 
     public void takePicture(View view) {
@@ -226,5 +233,8 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
 
         User user = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
         user.addRecipe(builder.createRecipe());
+
+        Intent profile = new Intent(this, NavigationActivity.class);
+        startActivity(profile);
     }
 }
