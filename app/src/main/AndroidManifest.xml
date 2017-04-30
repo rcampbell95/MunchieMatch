@@ -14,16 +14,29 @@
         <uses-permission android:name="android.permission.VIBRATE" />
 
         <activity android:name=".LoginActivity">
-            //Copy and Paste intent filter to run
+            //Copy and Paste intent filter inside the activity brackets to run the activity first
 
+        </activity>
+
+        <activity android:name=".RegisterActivity">
+
+        </activity>
+
+        <activity android:name=".NavigationActivity">
+
+        </activity>
+
+        <activity android:name=".TimerActivity">
+
+        </activity>
+
+        <activity android:name=".MatchingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".NavigationActivity" />
-        <activity android:name=".TimerActivity"/>
+
     </application>
 
 </manifest>
