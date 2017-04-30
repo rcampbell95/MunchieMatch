@@ -16,7 +16,7 @@ public class User {
     private ArrayList<Recipe> likedRecipes;
 
     private FirebaseUser loggedInUser;
-    //TODO Add login information
+    //TODO Add user profile picture
     private String userName;
     private String userAge;
 
@@ -40,6 +40,9 @@ public class User {
     public void addRecipe(Recipe newRecipe) {
         userRecipes.add(newRecipe);
     }
+
+    public ArrayList<Recipe> getRecipes() {return userRecipes;}
+
 
     public String getUserName() {
         return userName;
