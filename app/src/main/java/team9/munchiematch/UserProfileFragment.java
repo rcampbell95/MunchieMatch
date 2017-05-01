@@ -130,14 +130,6 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 //        }
 
         buttonLogout.setOnClickListener(this);
-
-
-        for(Iterator<Recipe> i = currentUser.getRecipes().iterator();i.hasNext();) {
-            Recipe currentRecipe = i.next();
-            RecipeView recipeView = new RecipeView(getContext(), currentRecipe.getTitle(), currentRecipe.getPicturePath());
-            //recipeContainer.addView(recipeView);
-            Log.e("User", recipeView.toString());
-        }
     }
 
     @Override

@@ -69,13 +69,5 @@
         android:layout_alignStart="@+id/userName"
         android:layout_marginTop="17dp" />
 
-    <LinearLayout
-        android:id="@+id/userRecipes"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/recipeAddButton">
-    </LinearLayout>
-
 
 </RelativeLayout>
