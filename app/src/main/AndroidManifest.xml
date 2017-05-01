@@ -25,7 +25,6 @@
         </provider>
 
         <activity android:name=".LoginActivity">
-            //Copy and Paste intent filter to run
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,6 +43,10 @@
             android:label="@string/title_activity_recipe_submission"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".MatchingActivity">
+
+        </activity>
     </application>
 
 </manifest>
