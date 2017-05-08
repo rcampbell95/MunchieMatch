@@ -36,10 +36,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
 
         //initializing firebase auth object
-        firebaseAuth = firebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(this);
 
@@ -65,9 +65,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void registerUser(){
         String email = editTextEmail.getText().toString().trim();
         String username = editTextUsername.getText().toString().trim();
-
         String password = editTextPassword.getText().toString().trim();
-
         String age = editTextAge.getText().toString().trim();
 
         //check if fields are empty
@@ -98,41 +96,42 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         progressDialog.setMessage("Registering User...");
         progressDialog.show(); // Show the message dialog
 
-        firebaseAuth.createUserWithEmailAndPassword(email,password) // see if user completes fields
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        //user is successfully registered and logged in
-                        //profile activity start the profile
-                        //right now let's display a toast
-                        Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-
-                        Intent navigateIntent = new Intent(RegisterActivity.this, NavigationActivity.class);
-                        startActivity(navigateIntent);
+        firebaseAuth.createUserWithEmailAndPassword(email,password) // see if user completes email and user fields
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            //user is successfully registered and logged in
+                            //profile activity start the profile
+                            //right now let's display a toast
+                            Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), UserProfileFragment.class));
+                        }
+                        else{
+                            Toast.makeText(RegisterActivity.this, "Could not register...Please try again.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                     }
-                    else{
-                        Toast.makeText(RegisterActivity.this, "Could not register...Please try again.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
-
+                });
 
 
 
     }
 
     @Override
-    public void onClick(View view) {
-        if(view == buttonRegister) {
+    //Allow user to go to -> AnotherActivity
+    public void onClick(View v) {
+        if(v == buttonRegister) {
             registerUser();
-
         }
 
-        if(view == textViewSignin) {
+        if(v == textViewSignin) {
             //will open login activity
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
         }
 
     }
 }
+

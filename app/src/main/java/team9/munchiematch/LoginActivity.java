@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //UserLogin Method
     private void userLogin(){
+
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
@@ -91,17 +92,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             finish();
                             startActivity(new Intent(getApplicationContext(), UserProfileFragment.class));
                         }
+                        else {
+                            Toast.makeText(LoginActivity.this, "Could not Login...Please try again.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                     }
                 });
 
     }
-    @Override
-    public void onClick(View view) {
-        if(view == bSignIn) {
-            userLogin();
 
+
+    @Override
+    public void onClick(View v) {
+        if(v == bSignIn) {
+            userLogin();
         }
-        if(view == tvSignUp){
+        if(v == tvSignUp){
             //"When register clicks "Don't have an account? Signup Here" -> RegisterActivity
             finish();
             startActivity(new Intent(this, RegisterActivity.class));
