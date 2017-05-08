@@ -143,7 +143,6 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
         profilePicture = (ImageButton) rootView.findViewById(R.id.profilePicture);
         profilePicture.setOnClickListener(this);
-        recipeContainer = (LinearLayout) rootView.findViewById(R.id.userRecipes);
         textViewUserEmail = (TextView) rootView.findViewById(R.id.textViewUserEmail);
         buttonLogout = (Button) rootView.findViewById(R.id.buttonLogout);
 
