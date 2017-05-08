@@ -9,6 +9,7 @@
     <string name="timerVal">Timer</string>
     <string name="age">Age</string>
     <string name="already_registered_sign_in_here">Already Registered? Sign in here</string>
+    <string name="dont_have_an_account_sign_up_here">Don\'t have an account? Sign up here!</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="register">Register</string>
@@ -20,4 +21,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email">Email</string>
     <string name="register_user">register user</string>
+    <string name="don_t_have_an_account_signup_here">Don\'t have an account? Sign up here!</string>
+    <string name="signin">Signin</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Enter email</string>
+    <string name="munchie_user_login">Munchie User Login</string>
+    <string name="munchie_user_registration">Munchie Match User Registration</string>
 </resources>
