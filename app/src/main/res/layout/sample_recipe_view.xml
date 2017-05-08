@@ -6,7 +6,8 @@
     <team9.munchiematch.RecipeView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:paddingBottom="40dp"
-        android:paddingLeft="20dp" />
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp" />
 
 </FrameLayout>

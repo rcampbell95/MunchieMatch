@@ -1,9 +1,13 @@
 package team9.munchiematch;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.AttributeSet;
+import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +15,12 @@ import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 import java.util.Iterator;
 
 
@@ -80,7 +90,13 @@ public class LikedRecipesFragment extends Fragment {
 
         for(Iterator<Recipe> i = currentUser.getRecipes().iterator(); i.hasNext();) {
             Recipe currentRecipe = i.next();
-            RecipeView recipeView = new RecipeView(getContext(), currentRecipe.getTitle(), currentRecipe.getPicturePath());
+            
+            XmlResourceParser parser = getResources().getLayout(R.layout.sample_recipe_view);
+            AttributeSet attributes = Xml.asAttributeSet(parser);
+
+            RecipeView recipeView = new RecipeView(getContext(), attributes);
+            recipeView.setTitle(currentRecipe.getTitle());
+            recipeView.setPicture(currentRecipe.getPicturePath());
             likedRecipes.addView(recipeView);
             //Log.e("User", recipeView.toString());
         }
