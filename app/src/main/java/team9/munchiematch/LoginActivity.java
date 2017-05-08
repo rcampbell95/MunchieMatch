@@ -38,11 +38,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         //Check if user is logged in
-        if(firebaseAuth.getCurrentUser() != null){
-            //profile activity here When user is login
-            finish();
-            startActivity(new Intent(getApplicationContext(), NavigationActivity.class));
-        }
+//        if(firebaseAuth.getCurrentUser() != null){
+//            //profile activity here When user is login
+//            finish();
+//            startActivity(new Intent(getApplicationContext(), NavigationActivity.class));
+//        }
 
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
@@ -90,11 +90,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             //start profile activity
                             finish();
-                            startActivity(new Intent(getApplicationContext(), UserProfileFragment.class));
+                            startActivity(new Intent(getApplicationContext(), NavigationActivity.class));
                         }
                         else {
                             Toast.makeText(LoginActivity.this, "Could not Login...Please try again.", Toast.LENGTH_SHORT).show();
-                            return;
+
                         }
 
                     }

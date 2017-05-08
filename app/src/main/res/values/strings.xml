@@ -21,6 +21,7 @@
     <string name="email">Email</string>
     <string name="register_user">register user</string>
     <string name="title_activity_recipe_submission">RecipeSubmissionActivity</string>
+    <string name="munchie_user_registration">Munchie User Registration</string>
     <string-array name="mealTypes">
         <item>Breakfast</item>
         <item>Lunch</item>
