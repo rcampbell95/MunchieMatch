@@ -46,6 +46,9 @@
         <activity android:name=".MatchingActivity">
 
         </activity>
+        <activity android:name=".MainChatActivity">
+
+        </activity>
         <activity android:name=".youveBeenMatched">
 
         </activity>

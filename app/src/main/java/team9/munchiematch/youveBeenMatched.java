@@ -22,11 +22,10 @@ public class youveBeenMatched extends AppCompatActivity {
 
     }
     public void acceptPerson (View view) {
-        Intent intent = new Intent(this, NavigationActivity.class);
+        Intent intent = new Intent(this, MainChatActivity.class);
         startActivity(intent);
     }
     public void rejectPerson(View view) {
         this.finish();
     }
-
 }
