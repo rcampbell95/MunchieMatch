@@ -161,9 +161,6 @@ LikedRecipesFragment.OnFragmentInteractionListener {
                 case 0:
                     return LikedRecipesFragment.newInstance("Param1", "Param2");
                 case 1:
-                    return PlaceholderFragment.newInstance(position + 1);
-                    // TODO -- Add activity transition to matching portion of app
-                case 2:
                     return UserProfileFragment.newInstance();
             }
 
@@ -173,7 +170,7 @@ LikedRecipesFragment.OnFragmentInteractionListener {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
@@ -182,8 +179,6 @@ LikedRecipesFragment.OnFragmentInteractionListener {
                 case 0:
                     return "Liked Recipes";
                 case 1:
-                    return "Matching";
-                case 2:
                     return "Profile";
             }
             return null;
