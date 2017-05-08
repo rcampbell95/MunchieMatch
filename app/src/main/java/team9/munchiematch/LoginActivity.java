@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("Let's get Munchie Matching...");
         progressDialog.show(); // Show the message dialog
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
