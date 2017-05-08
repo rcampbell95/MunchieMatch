@@ -169,7 +169,7 @@ LikedRecipesFragment.OnFragmentInteractionListener {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
 
@@ -187,6 +187,11 @@ LikedRecipesFragment.OnFragmentInteractionListener {
 
     public void addRecipe(View view) {
         Intent intent = new Intent(this, RecipeSubmissionActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToMatching(View view) {
+        Intent intent = new Intent(this, MatchingActivity.class);
         startActivity(intent);
     }
 
