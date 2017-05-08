@@ -1,6 +1,7 @@
 package team9.munchiematch;
 
 import android.graphics.Bitmap;
+import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,15 +12,14 @@ import java.util.Comparator;
 
 public class Recipe {
     private String title;
-    private ArrayList<Pair<String, Ingredient>> recipeIngredients;
+    private ArrayList<Ingredient> recipeIngredients;
     private ArrayList<Pair<String, String>> recipeSteps;
     private MealType recipeMealType;
     private Privacy recipeVisibility = Privacy.PRIVATE;
-    private Bitmap picture;
+    private Bitmap icon;
+    private String picturePath;
 
     public Recipe() {
-        ;
-        ///TODO-- Add constuctor?
     }
 
     public String getTitle() {
@@ -30,17 +30,46 @@ public class Recipe {
         title = newTitle;
     }
 
-    public Bitmap getPicture() {
-        return picture;
+    public void setIcon(Bitmap newIcon) {
+        icon = newIcon;
     }
 
-    public void setIngredients(ArrayList<Pair<String, Ingredient>> userSubmittedIngredients) {
+    public Bitmap getIcon() {
+        return icon;
+    }
+
+    public void setPicturePath(String newPicturePath) {
+        picturePath = newPicturePath;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setIngredients(ArrayList<Ingredient> userSubmittedIngredients) {
         recipeIngredients = userSubmittedIngredients;
     }
 
+    public ArrayList<Ingredient> getIngredients() {
+        return recipeIngredients;
+    }
+
+    public void setRecipeSteps(ArrayList<Pair<String, String>> userSubmittedSteps) {
+        recipeSteps = userSubmittedSteps;
+    }
+
+    public ArrayList<Pair<String, String>> getSteps() {
+        return recipeSteps;
+    }
+
+    public ArrayList<Pair<String, String>> getRecipeSteps() {
+        return recipeSteps;
+    }
+
+    //TODO -- refactor this method
     public boolean findIngredient(Ingredient searchIngredient, Comparator<Recipe> compareScheme) {
-        for(Pair<String, Ingredient> ingredientLine : recipeIngredients) {
-            if(ingredientLine.getSecond() == searchIngredient) {
+        for(Ingredient ingredientLine : recipeIngredients) {
+            if(ingredientLine == searchIngredient) {
                 return true;
             }
         }
@@ -63,41 +92,11 @@ public class Recipe {
         recipeVisibility = Privacy.PUBLIC;
     }
 
-    /*
-    Private class that implements
-    a tuple data structure
-    using generics
-     */
-
-    public class Pair<K, E> {
-        K first;
-        E second;
-
-        public Pair(K newFirst, E newSecond){
-            first = newFirst;
-            second = newSecond;
-        }
-
-        public K getFirst() {
-            return first;
-        }
-
-        public E getSecond() {
-            return second;
-        }
-    }
 
     /*
     Private class that represents an ingredient
     in the user submitted recipe
      */
-    private class Ingredient {
-        ///TODO-- Remove Placeholder
-    }
-
-    private class MealType {
-        //TODO-- Remove Placeholder
-    }
 
     private enum Privacy {PUBLIC, PRIVATE}
 }
