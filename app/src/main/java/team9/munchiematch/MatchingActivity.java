@@ -1,10 +1,15 @@
 package team9.munchiematch;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import team9.munchiematch.LocalRecipeObject;
@@ -22,6 +27,7 @@ public class MatchingActivity extends AppCompatActivity {
     public TextView recipeTitle;
     public TextView likeDislikeStatus;
     public ImageView recipeImage;
+    public int randomInt;
     boolean dislikedPressed = false;
     public int index = 0;
     private StorageReference recipeDatabase;
@@ -104,7 +110,13 @@ public class MatchingActivity extends AppCompatActivity {
             else{ //likedIsPressed
                 recipeList.get(index).setLiked();
                 recipeList.get(index).setSeen();
-                index++; //
+                index++;
+                randomInt = (int )(Math.random() * 9 + 1);
+                if (randomInt == 5){
+                    Intent intent = new Intent(this, youveBeenMatched.class);
+                    startActivity(intent);
+                }
+
                 if (index > recipeList.size() - 1) { //check if index is greater than list... if it is reset
                     Collections.shuffle(recipeList);
                     index = 0;
@@ -130,5 +142,7 @@ public class MatchingActivity extends AppCompatActivity {
             }
         }, seconds);
     }
+
+
 
 }
