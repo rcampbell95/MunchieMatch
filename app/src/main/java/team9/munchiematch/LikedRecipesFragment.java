@@ -84,22 +84,9 @@ public class LikedRecipesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_liked_recipes, container, false);
 
-        User currentUser = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
-
         likedRecipes = (LinearLayout) rootView.findViewById(R.id.likedRecipes);
 
-        for(Iterator<Recipe> i = currentUser.getRecipes().iterator(); i.hasNext();) {
-            Recipe currentRecipe = i.next();
-            
-            XmlResourceParser parser = getResources().getLayout(R.layout.sample_recipe_view);
-            AttributeSet attributes = Xml.asAttributeSet(parser);
-
-            RecipeView recipeView = new RecipeView(getContext(), attributes);
-            recipeView.setTitle(currentRecipe.getTitle());
-            recipeView.setPicture(currentRecipe.getPicturePath());
-            likedRecipes.addView(recipeView);
-            //Log.e("User", recipeView.toString());
-        }
+        addLikedRecipes();
 
         return rootView;
     }
@@ -141,5 +128,21 @@ public class LikedRecipesFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void addLikedRecipes() {
+        User currentUser = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
+        for(Iterator<Recipe> i = currentUser.getRecipes().iterator(); i.hasNext();) {
+            Recipe currentRecipe = i.next();
+
+            XmlResourceParser parser = getResources().getLayout(R.layout.sample_recipe_view);
+            AttributeSet attributes = Xml.asAttributeSet(parser);
+
+            RecipeView recipeView = new RecipeView(getContext(), attributes);
+            recipeView.setTitle(currentRecipe.getTitle());
+            recipeView.setPicture(currentRecipe.getPicturePath());
+            likedRecipes.addView(recipeView);
+            //Log.e("User", recipeView.toString());
+        }
     }
 }

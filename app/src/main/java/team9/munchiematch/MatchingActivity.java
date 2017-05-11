@@ -58,7 +58,7 @@ public class MatchingActivity extends AppCompatActivity {
         recipeTitle.setText(recipeList.get(index).recipeTitle);
         recipeImage.setImageResource(recipeList.get(index).recipeImageID);
 
-        User user = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
+
     }
 
     public void goToSettings(View view) {
@@ -75,7 +75,8 @@ public class MatchingActivity extends AppCompatActivity {
     }
 
     public void checkMarkPressed(View v){
-        UserProfileFragment.currentUser.addLikedRecipe(recipeList.get(0));
+        User user = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
+        user.addLikedRecipe(recipeList.get(0));
         //removes this item from future selects
         delayedStatus(500, "Liked", "#458B00");
         loadNextRecipe();
