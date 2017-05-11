@@ -34,7 +34,7 @@ public class RecipeView extends LinearLayout {
     public RecipeView(Context context) {
         super(context);
 
-        //this.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+        this.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
         this.setGravity(Gravity.START);
         this.setOrientation(LinearLayout.HORIZONTAL);
         this.setMinimumHeight(225);
@@ -106,8 +106,9 @@ public class RecipeView extends LinearLayout {
     }
 
     public void setTitle(String title) {
+        int TEXT_SIZE = 20;
         recipeTitle.setText(title);
-        recipeTitle.setTextSize(20);
+        recipeTitle.setTextSize(TEXT_SIZE);
     }
 
     public void setPicture(String picturePath) {
@@ -118,8 +119,6 @@ public class RecipeView extends LinearLayout {
         // Get the dimensions of the View
         int targetW = recipePicture.getWidth();
         int targetH = recipePicture.getHeight();
-        Log.e("RV", Integer.toString(targetH));
-        Log.e("RV", Integer.toString(targetW));
         // Get the dimensions of the bitmap
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
