@@ -5,34 +5,34 @@
     android:layout_height="match_parent"
     tools:context="team9.munchiematch.UserProfileFragment">
 
-    <ImageButton
-        android:id="@+id/profilePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        app:srcCompat="@drawable/default_profile"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+            <ImageButton
+                android:id="@+id/profilePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                app:srcCompat="@drawable/default_profile" />
 
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="11dp"
-        android:layout_below="@+id/profilePicture"
-        android:layout_alignEnd="@+id/profilePicture"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/profilePicture"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/profilePicture"
+                android:layout_marginTop="11dp"
+                android:text="Name"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="Settings" />
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="Settings" />
 
     <Button
         android:id="@+id/matchingButton"
@@ -49,17 +49,17 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Add Recipe"
-        android:onClick="addRecipe"/>
+        android:onClick="addRecipe"
+        android:text="Add Recipe" />
 
     <Button
+        android:id="@+id/buttonLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="logout"
-        android:id="@+id/buttonLogout"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:onClick="LogoutUser"/>
+        android:layout_alignParentTop="true"
+        android:onClick="LogoutUser"
+        android:text="logout" />
 
     <TextView
         android:id="@+id/textViewUserEmail"

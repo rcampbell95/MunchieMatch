@@ -1,5 +1,6 @@
 package team9.munchiematch;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -12,8 +13,11 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,41 +27,55 @@ import android.widget.TextView;
  */
 public class RecipeView extends LinearLayout {
     private TextView recipeTitle;
-    private ImageView recipePicture;
+    private ImageButton recipePicture;
 
     private String picturePath;
 
     public RecipeView(Context context) {
         super(context);
-        init(null, 0);
-    }
 
-    public RecipeView(Context context, String title, String picturePath) {
-        super(context);
         this.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-        this.setGravity(Gravity.CENTER);
-        this.setOrientation(LinearLayout.VERTICAL);
+        this.setGravity(Gravity.START);
+        this.setOrientation(LinearLayout.HORIZONTAL);
         this.setMinimumHeight(225);
         this.setMinimumWidth(225);
 
         recipeTitle = new TextView(context);
-        recipeTitle.setText(title);
 
-        recipePicture = new ImageView(context);
+        recipePicture = new ImageButton(context);
         recipePicture.setAdjustViewBounds(true);
-        recipePicture.setMinimumHeight(200);
-        recipePicture.setMinimumWidth(255);
+        recipePicture.setMinimumHeight(300);
+        recipePicture.setMinimumWidth(300);
+        recipePicture.setMaxHeight(300);
+        recipePicture.setMaxWidth(300);
 
-        this.addView(recipeTitle);
         this.addView(recipePicture);
-
-        this.picturePath = picturePath;
+        this.addView(recipeTitle);
 
         init(null, 0);
     }
 
     public RecipeView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        //this.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+        this.setGravity(Gravity.START);
+        this.setOrientation(LinearLayout.HORIZONTAL);
+        this.setMinimumHeight(225);
+        this.setMinimumWidth(225);
+
+        recipeTitle = new TextView(context);
+
+        recipePicture = new ImageButton(context);
+        recipePicture.setAdjustViewBounds(true);
+        recipePicture.setMinimumHeight(300);
+        recipePicture.setMinimumWidth(300);
+        recipePicture.setMaxHeight(300);
+        recipePicture.setMaxWidth(300);
+
+        this.addView(recipePicture);
+        this.addView(recipeTitle);
+
         init(attrs, 0);
     }
 
@@ -76,8 +94,6 @@ public class RecipeView extends LinearLayout {
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.RecipeView, defStyle, 0);
-
-
         a.recycle();
     }
 
@@ -89,12 +105,20 @@ public class RecipeView extends LinearLayout {
         // Why doesn't the Recipe View get drawn?
     }
 
+    public void setTitle(String title) {
+        int TEXT_SIZE = 20;
+        recipeTitle.setText(title);
+        recipeTitle.setTextSize(TEXT_SIZE);
+    }
+
+    public void setPicture(String picturePath) {
+        this.picturePath = picturePath;
+    }
+
     private void setPic(String mCurrentPhotoPath) {
         // Get the dimensions of the View
         int targetW = recipePicture.getWidth();
         int targetH = recipePicture.getHeight();
-        Log.e("RV", Integer.toString(targetH));
-        Log.e("RV", Integer.toString(targetW));
         // Get the dimensions of the bitmap
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
@@ -112,5 +136,8 @@ public class RecipeView extends LinearLayout {
 
         Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
         recipePicture.setImageBitmap(bitmap);
+
+        invalidate();
+        requestLayout();
     }
 }

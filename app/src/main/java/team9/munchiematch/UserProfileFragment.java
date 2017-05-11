@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -205,6 +206,10 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
         switch (view.getId()) {
             case R.id.profilePicture:
                 dispatchTakePictureIntent();
+                break;
+            case R.id.settingsButton:
+                break;
+            case R.id.buttonLogout:
                 break;
         }
     }
