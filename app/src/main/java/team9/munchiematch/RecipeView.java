@@ -87,7 +87,7 @@ public class RecipeView extends LinearLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        setPic(picturePath);
+        //setPic(picturePath);
     }
 
     private void init(AttributeSet attrs, int defStyle) {
@@ -114,6 +114,8 @@ public class RecipeView extends LinearLayout {
     public void setPicture(String picturePath) {
         this.picturePath = picturePath;
     }
+
+    public void setPicture(int resourceID) { recipePicture.setImageResource(resourceID);}
 
     private void setPic(String mCurrentPhotoPath) {
         // Get the dimensions of the View

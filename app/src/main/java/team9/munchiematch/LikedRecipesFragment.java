@@ -132,15 +132,15 @@ public class LikedRecipesFragment extends Fragment {
 
     public void addLikedRecipes() {
         User currentUser = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
-        for(Iterator<Recipe> i = currentUser.getRecipes().iterator(); i.hasNext();) {
-            Recipe currentRecipe = i.next();
+        for(Iterator<LocalRecipeObject> i = currentUser.getLikedRecipes().iterator(); i.hasNext();) {
+            LocalRecipeObject currentRecipe = i.next();
 
             XmlResourceParser parser = getResources().getLayout(R.layout.sample_recipe_view);
             AttributeSet attributes = Xml.asAttributeSet(parser);
 
             RecipeView recipeView = new RecipeView(getContext(), attributes);
-            recipeView.setTitle(currentRecipe.getTitle());
-            recipeView.setPicture(currentRecipe.getPicturePath());
+            recipeView.setTitle(currentRecipe.recipeTitle);
+            recipeView.setPicture(currentRecipe.recipeImageID);
             likedRecipes.addView(recipeView);
             //Log.e("User", recipeView.toString());
         }
