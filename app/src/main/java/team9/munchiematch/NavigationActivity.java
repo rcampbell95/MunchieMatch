@@ -194,7 +194,12 @@ LikedRecipesFragment.OnFragmentInteractionListener {
         Intent intent = new Intent(this, MatchingActivity.class);
         startActivity(intent);
     }
-    
+
+    public void goToTimer(View view) {
+        Intent intent = new Intent(this, TimerActivity.class);
+        startActivity(intent);
+    }
+
     public void onFragmentInteraction(Uri uri) {
         // TODO -- implement for action between fragments
     }

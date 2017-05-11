@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by robert on 3/18/2017.
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
 public class User {
     private ArrayList<Recipe> userRecipes;
-    private ArrayList<Recipe> likedRecipes;
+    private HashSet<LocalRecipeObject> likedRecipes;
 
     private FirebaseUser loggedInUser;
     //TODO Add user profile picture
@@ -24,7 +25,7 @@ public class User {
 
     private User(FirebaseUser currentUser) {
         userRecipes = new ArrayList<Recipe>();
-        likedRecipes = new ArrayList<Recipe>();
+        likedRecipes = new HashSet<LocalRecipeObject>();
 
         loggedInUser = currentUser;
     }
@@ -52,7 +53,7 @@ public class User {
         return loggedInUser.getPhotoUrl();
     }
 
-    public void addLikedRecipe(Recipe newLikeRecipe) {
+    public void addLikedRecipe(LocalRecipeObject newLikeRecipe) {
         likedRecipes.add(newLikeRecipe);
     }
 

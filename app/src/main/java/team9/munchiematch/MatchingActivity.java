@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import team9.munchiematch.LocalRecipeObject;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -56,6 +57,8 @@ public class MatchingActivity extends AppCompatActivity {
         //display current initial index
         recipeTitle.setText(recipeList.get(index).recipeTitle);
         recipeImage.setImageResource(recipeList.get(index).recipeImageID);
+
+        User user = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
     }
 
     public void goToSettings(View view) {
@@ -72,6 +75,7 @@ public class MatchingActivity extends AppCompatActivity {
     }
 
     public void checkMarkPressed(View v){
+        UserProfileFragment.currentUser.addLikedRecipe(recipeList.get(0));
         //removes this item from future selects
         delayedStatus(500, "Liked", "#458B00");
         loadNextRecipe();
