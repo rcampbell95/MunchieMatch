@@ -14,6 +14,7 @@
     <string name="register">Register</string>
     <string name="username">Username</string>
     <string name="recipeText">RecipeText</string>
+    <string name="detailedRecipeTitle">detailedRecipeTitle</string>
     <string name="likeDislikeStatus">likeDislikeStatus</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -12,8 +12,11 @@
         android:theme="@style/AppTheme.NoActionBar">
         <uses-permission android:name="android.permission.VIBRATE" />
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-feature android:name="android.hardware.camera"
+
+        <uses-feature
+            android:name="android.hardware.camera"
             android:required="false" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.android.fileprovider"
@@ -21,12 +24,13 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
 
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,24 +38,18 @@
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".NavigationActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".TimerActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".RecipeSubmissionActivity"
             android:label="@string/title_activity_recipe_submission"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".MatchingActivity">
-
-        </activity>
-        <activity android:name=".MainChatActivity">
-
-        </activity>
-        <activity android:name=".youveBeenMatched">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MatchingActivity"></activity>
+        <activity android:name=".MainChatActivity"></activity>
+        <activity android:name=".youveBeenMatched"></activity>
+        <activity android:name=".detailedRecipeView"></activity>
     </application>
 
 </manifest>

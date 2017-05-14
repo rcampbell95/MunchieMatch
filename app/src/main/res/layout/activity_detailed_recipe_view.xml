@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="team9.munchiematch.detailedRecipeView">
+
+    <ImageView
+        android:id="@+id/dRImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/colorAccent"
+        android:layout_alignTop="@+id/timerButton2"
+        android:layout_alignStart="@+id/dRTitle" />
+
+
+    <TextView
+        android:id="@+id/detailedRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Cooking Instructions\n
+Step 1) First you do this and this\n
+Step 2) Then you do so and so\n
+Step 3) After that do this\n
+Step 4) Blah Blah blah\n
+Step 5) Blah Blah blah\n
+Step 6) The data base isn't working :[\n
+Step X) Blah Blah blah\n
+And Wah Lah You're Done!!!"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/dRTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="23dp" />
+
+    <TextView
+        android:id="@+id/dRTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="@string/detailedRecipeTitle"
+        android:layout_below="@+id/dRImage"
+        android:layout_alignStart="@+id/detailedRecipe" />
+
+    <ImageButton
+        android:id="@+id/timerButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/timer"
+        android:layout_marginEnd="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="timerButtonPressed"/>
+
+
+</RelativeLayout>

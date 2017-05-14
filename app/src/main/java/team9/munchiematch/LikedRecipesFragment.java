@@ -37,6 +37,8 @@ public class LikedRecipesFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static int imageID;
+    public static String titleID;
 
     private LinearLayout likedRecipes;
 
@@ -140,7 +142,9 @@ public class LikedRecipesFragment extends Fragment {
 
             RecipeView recipeView = new RecipeView(getContext(), attributes);
             recipeView.setTitle(currentRecipe.recipeTitle);
+            titleID = currentRecipe.recipeTitle;
             recipeView.setPicture(currentRecipe.recipeImageID);
+            imageID = currentRecipe.recipeImageID;
             likedRecipes.addView(recipeView);
             //Log.e("User", recipeView.toString());
         }
