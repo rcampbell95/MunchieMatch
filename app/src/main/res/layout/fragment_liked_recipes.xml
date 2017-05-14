@@ -15,13 +15,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/timerButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cook Timer"
-                android:onClick="goToTimer"/>
-
             <LinearLayout
                 android:id="@+id/likedRecipes"
                 android:layout_width="match_parent"
