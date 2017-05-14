@@ -47,7 +47,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
     private static final String ARG_PARAM2 = "param2";
 
     private static final String TAG = "User Profile";
-    private TextView userNameField;
+    private TextView userEmail;
 
     private Button addRecipeButton;
 
@@ -123,7 +123,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
 
 
         User currentUser = User.getInstance(mAuth.getCurrentUser());
-        userNameField.setText(currentUser.getUserName());
+        userEmail.setText(currentUser.getEmail());
 
 //        if(mAuth.getCurrentUser() == null) {
 //            finish();
@@ -138,13 +138,13 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
-        userNameField = (TextView) rootView.findViewById(R.id.userName);
+        userEmail = (TextView) rootView.findViewById(R.id.userEmail);
 
         addRecipeButton = (Button) rootView.findViewById(R.id.recipeAddButton);
 
         profilePicture = (ImageButton) rootView.findViewById(R.id.profilePicture);
         profilePicture.setOnClickListener(this);
-        textViewUserEmail = (TextView) rootView.findViewById(R.id.textViewUserEmail);
+        textViewUserEmail = (TextView) rootView.findViewById(R.id.textViewUserBio);
         buttonLogout = (Button) rootView.findViewById(R.id.buttonLogout);
 
         return rootView;

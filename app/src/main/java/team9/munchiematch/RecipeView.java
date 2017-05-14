@@ -109,6 +109,7 @@ public class RecipeView extends LinearLayout {
         int TEXT_SIZE = 20;
         recipeTitle.setText(title);
         recipeTitle.setTextSize(TEXT_SIZE);
+        
     }
 
     public void setPicture(String picturePath) {

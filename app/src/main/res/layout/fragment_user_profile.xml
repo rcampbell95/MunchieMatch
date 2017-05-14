@@ -16,59 +16,85 @@
                 app:srcCompat="@drawable/default_profile" />
 
             <TextView
-                android:id="@+id/userName"
+                android:id="@+id/userEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/profilePicture"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/profilePicture"
                 android:layout_marginTop="11dp"
-                android:text="Name"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:text="Email"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_alignEnd="@+id/buttonLogout" />
 
-            <Button
-                android:id="@+id/settingsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="Settings" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/matchingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:text="Matching"
-        android:onClick="goToMatching"/>
-
-    <Button
-        android:id="@+id/recipeAddButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="addRecipe"
-        android:text="Add Recipe" />
-
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:onClick="LogoutUser"
-        android:text="logout" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewUserEmail"
+        android:id="@+id/textViewUserBio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:layout_below="@+id/userName"
-        android:layout_alignStart="@+id/userName"
-        android:layout_marginTop="17dp" />
+        android:layout_weight="1"
+        android:maxLines="5"
+        android:text="Bio"
+        android:textSize="25sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/userBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:layout_marginStart="17dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/textViewUserBio" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/textViewUserBio"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="128dp">
+
+        <Button
+            android:id="@+id/matchingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:onClick="goToMatching"
+            android:text="Matching" />
+
+        <Button
+            android:id="@+id/recipeAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:onClick="addRecipe"
+            android:text="Add Recipe" />
+
+        <Button
+            android:id="@+id/buttonLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="11dp"
+            android:layout_weight="1"
+            android:onClick="LogoutUser"
+            android:text="logout" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

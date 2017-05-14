@@ -48,7 +48,7 @@ public class User {
     public ArrayList<LocalRecipeObject> getLikedRecipes() { return likedRecipes;}
 
     public String getUserName() {
-        return userName;
+        return loggedInUser.getDisplayName();
     }
 
     public Uri getProfilePicture() {
@@ -65,5 +65,9 @@ public class User {
 
     public void setAge(final String age) {
         this.userAge = age;
+    }
+
+    public String getEmail() {
+        return loggedInUser.getEmail();
     }
 }
