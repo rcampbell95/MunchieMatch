@@ -29,7 +29,6 @@ import android.widget.TextView;
 public class RecipeView extends LinearLayout {
     private TextView recipeTitle;
     private ImageButton recipePicture;
-
     private String picturePath;
 
     public RecipeView(Context context) {
@@ -78,7 +77,7 @@ public class RecipeView extends LinearLayout {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, TimerActivity.class);
+                Intent intent = new Intent(context, detailedRecipeView.class);
                 context.startActivity(intent);
             }
         });
@@ -120,14 +119,12 @@ public class RecipeView extends LinearLayout {
         int TEXT_SIZE = 20;
         recipeTitle.setText(title);
         recipeTitle.setTextSize(TEXT_SIZE);
-
     }
 
-    public void setPicture(String picturePath) {
-        this.picturePath = picturePath;
-    }
 
-    public void setPicture(int resourceID) { recipePicture.setImageResource(resourceID);}
+    public void setPicture(int resourceID) {
+        recipePicture.setImageResource(resourceID);
+    }
 
     private void setPic(String mCurrentPhotoPath) {
         // Get the dimensions of the View
