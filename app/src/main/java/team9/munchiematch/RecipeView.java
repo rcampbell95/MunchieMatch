@@ -2,6 +2,7 @@ package team9.munchiematch;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -55,7 +56,7 @@ public class RecipeView extends LinearLayout {
         init(null, 0);
     }
 
-    public RecipeView(Context context, AttributeSet attrs) {
+    public RecipeView(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         //this.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
@@ -72,6 +73,16 @@ public class RecipeView extends LinearLayout {
         recipePicture.setMinimumWidth(300);
         recipePicture.setMaxHeight(300);
         recipePicture.setMaxWidth(300);
+
+        recipePicture.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, TimerActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
 
         this.addView(recipePicture);
         this.addView(recipeTitle);
@@ -109,7 +120,7 @@ public class RecipeView extends LinearLayout {
         int TEXT_SIZE = 20;
         recipeTitle.setText(title);
         recipeTitle.setTextSize(TEXT_SIZE);
-        
+
     }
 
     public void setPicture(String picturePath) {
