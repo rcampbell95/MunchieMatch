@@ -19,6 +19,8 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -189,6 +191,13 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
         }
     }
 
+    public void Loggingout(View view) {
+        if(view == buttonLogout){
+            mAuth.signOut();
+            startActivity(new Intent(this.getActivity(), LoginActivity.class));
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
@@ -210,6 +219,7 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
             case R.id.settingsButton:
                 break;
             case R.id.buttonLogout:
+                Loggingout(view);
                 break;
         }
     }
