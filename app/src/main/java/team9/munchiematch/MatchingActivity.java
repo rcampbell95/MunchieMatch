@@ -75,8 +75,6 @@ public class MatchingActivity extends AppCompatActivity {
     }
 
     public void checkMarkPressed(View v){
-        User user = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
-        user.addLikedRecipe(recipeList.get(0));
         //removes this item from future selects
         delayedStatus(500, "Liked", "#458B00");
         loadNextRecipe();
@@ -115,6 +113,8 @@ public class MatchingActivity extends AppCompatActivity {
             else{ //likedIsPressed
                 recipeList.get(index).setLiked();
                 recipeList.get(index).setSeen();
+                User user = User.getInstance(FirebaseAuth.getInstance().getCurrentUser());
+                user.addLikedRecipe(recipeList.get(index));
                 index++;
                 randomInt = (int )(Math.random() * 9 + 1);
                 if (randomInt == 5){
