@@ -46,8 +46,8 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_submission);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         mealTypeDropDown = (Spinner) this.findViewById(R.id.mealTypeChoices);
         mealTypeDropDown.setAdapter(new ArrayAdapter<MealType>(this, android.R.layout.simple_spinner_item, MealType.values()));
@@ -67,15 +67,6 @@ public class RecipeSubmissionActivity extends AppCompatActivity {
         ingredientList = (LinearLayout) this.findViewById(R.id.recipeIngredientLayout);
         stepList = (LinearLayout) this.findViewById(R.id.recipeStepLayout);
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private File createImageFile() throws IOException {
